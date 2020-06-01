@@ -1,0 +1,40 @@
+/* css reset */
+*{margin: 0;padding: 0;}
+ol,ul,li{list-style: none;}
+a{text-decoration: none;}
+h1,h2,h3{ font-size:16px;}
+
+.box{margin: 20px auto;width: 360px ;height: 100%; background:white; text-align: center;}
+.box .reg_box{text-align: left; border:  1px solid #999999; padding:10px 20px ; margin-top: 20px ;}
+#nameSpan,#ps1Span,#ps2Span{font-size: 12px;}
+.box .reg_box>p:nth-of-type(1){font-size: 24px; font-weight: 800; margin-top:0;}    
+.box .reg_box input{outline: none; border: 1px #999999 solid ; margin-top: 10px;height: 24px;width: 45%;}
+.box .reg_box>p:nth-of-type(2){margin: 10px 15px 0;font-size: 12px;}
+.box .reg_box .change{width: 12px;height: 12px; margin-right: 8px;position: relative; top:2px;}
+.box .reg_box .change-text{font-size: 12px;}
+.box .reg_box .change-text>a:hover{color: #e47923; text-decoration: underline;}
+.box .reg_box .reg{width: 100%;height:30px; margin: 20px 0;background-image: linear-gradient(#f6db9b,#f0c24d ) ; border: none; outline: none;}
+.box .reg_box .reg:hover{background: #f0c24d;}
+.box .reg_box .reg2_box{position: relative;border-top: 0.5px solid #999999; margin-top: 10px;padding: 10px 0;cursor: pointer;}
+.box .reg_box .reg2_box .reg2_box_header{position: absolute;font-size: 12px;left: 50%;transform: translateX(-50%); top:-10px;width: 80px;height: 20px;background: white;text-align: center;}
+.box .reg_box .yzm{width: 100px;}
+.box .reg_box .yzm-text {width: 50px;height:18px; background: #fcfcfc; padding: 2px;margin-left: 10px; cursor: pointer;}
+.box .reg2_box .reg2_box_btn{width: 100%;line-height: 28px;background-image: linear-gradient(#62d71f, #15d71f);text-align: center;color: white;margin: 20px 0; cursor: pointer;}
+.box .reg2_box .reg2_box_btn:hover{background: #15d71f;}
+.box .reg2_box>li{font-size: 12px;}
+.box .reg_box>p:nth-of-type(3){font-size: 14px; padding: 20px 0; border-top:1px transparent solid;border-image:linear-gradient(to right,white, #b1afaf,white) 1 10 ;}
+.box .reg_box>p:nth-of-type(3)>a{color: #0055aa;}
+.box .reg_box>p:nth-of-type(3)>a:hover{ color: #e47923; text-decoration: underline;}
+
+#pass-box span{
+    display:inline-block;
+    height: 2px;
+    width: 50px;
+}
+
+
+#footer{width: 100%;  border-top:1px transparent solid;border-image:linear-gradient(to right,white, #cacaca,white) 1 10 ;height: 120px; text-align: center;}
+#footer>ul{margin: auto;display: flex;justify-content: center;}
+#footer>ul>li{margin:20px;font-size: 14px; }
+#footer>ul>li>a:hover{ color: #e47923; text-decoration: underline;}
+#footer>p{font-size: 14px;color: #999999;}

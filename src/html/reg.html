@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon注册</title>
+    <link rel="stylesheet" href="../scss/reg.css">
+</head>
+
+<body>
+    <div class="box">
+        <img src="../images/header_login.png" alt="">
+        <div class="reg_box">
+            <p>创建账号</p>
+            输入账号：<input type="text" id="username" name="username" autocomplete="off" value="1234567"><span
+                  id="nameSpan"></span><br>
+            输入密码：<input type="text" id="password1" name="password1" value="11aa__"><span id="ps1Span"></span><br>
+            <div id="pass-box"> <span></span><span></span><span></span></div>
+            确认密码：<input type="text" id="password2" name="password2" value="11aa__"><span id="ps2Span"></span><br>
+            <p>密码至少为6个字符。</p>
+
+            &nbsp;&nbsp;&nbsp;验证码：<input type="text" name="yzm" class="yzm"><span class="yzm-text"></span>
+            <br>
+
+            <input type="checkbox" name="checkbox1" class="change">
+            <span class="change-text">我已阅读并同意网站的<a href="javaScript:;">使用条件</a>及<a href="javaScript:;">隐私声明</a>。</span>
+            <br>
+            <input type="button" name="reg" value="注册" class="reg" id="reg">
+
+            <ul class="reg2_box">
+                <p class="reg2_box_header">其他注册方式</p>
+                <li class="reg2_box_btn"><span></span>微信账号注册</li>
+            </ul>
+            <p>已拥有账户？<a href="./login.html">登录 ▶</a></p>
+            <div id="message-box"></div>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <div id='footer'>
+        <ul>
+            <li><a href="javaScript:;">使用条件</a></li>
+            <li><a href="javaScript:;">隐私声明</a></li>
+            <li><a href="javaScript:;">帮助</a></li>
+        </ul>
+        <p>版权所有 © 1996-2020，亚马逊公司或其关联公司</p>
+    </div>
+    <script src="../js/cookie.js"></script>
+    <script src="../js/jquery.min.js"></script>
+
+    <script>
+        // 获取焦点边框变色
+        $(function () {
+            $('[name="username"]').focus(function () {
+                $('[name="username"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="username"]').blur(function () {
+                $('[name="username"]').css('border', '1px #999999 solid')
+            })
+            $('[name="password1"]').focus(function () {
+                $('[name="password1"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="password1"]').blur(function () {
+                $('[name="password1"]').css('border', '1px #999999 solid')
+            })
+            $('[name="password2"]').focus(function () {
+                $('[name="password2"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="password2"]').blur(function () {
+                $('[name="password2"]').css('border', '1px #999999 solid')
+            })
+            $('[name="yzm"]').focus(function () {
+                $('[name="yzm"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="yzm"]').blur(function () {
+                $('[name="yzm"]').css('border', '1px #999999 solid')
+            })
+        })
+
+        // 注册验证
+
+        // 添加一个变量存储前端验证的默认值
+        let isCheck = {
+            user: false,
+            pass: false,
+            pass2: false,
+        };
+        let hasUser = true;
+
+        // 主程序
+        window.onload = function () {
+            // 用户验证
+            $("#username").blur(function () {
+                console.log('失去焦点')
+                // 添加用户验证
+                // 1.前端验证（格式）
+                if (checkUserNameFront()) {
+                    // 1.1后端验证
+                    checkUserNameBack();
+                }
+            });
+
+            // 密码验证
+            $("#password1").blur(function () {
+                // 密码验证函数
+                checkPassword();
+            })
+
+            // 密码输入时，确认密码是空
+            $("#password1").change(function () {
+                console.log('我在输入密码')
+                $("#password2").val("");
+                $("#password2").next().html("");
+            })
+
+            // 确认密码验证
+            $("#password2").blur(function () {
+                // 确认密码验证函数
+                checkPassword2();
+            })
+
+            // 显示验证码
+            showCode();
+            // 点击span，重新产生验证码
+            $(".yzm-text").click(function () {
+                showCode();
+                // 把验证码发到后端
+                sendCode();
+            });
+
+            // 点击注册
+            $('#reg').click(function () {
+                console.log('我注册了');
+                // 定义前端验证的数量
+                let trueCount = 0;
+                for (let key in isCheck) {
+                    trueCount++;
+                }
+                if (trueCount == 3) {
+                    if (!hasUser) {
+                        //验证码验证
+                        if ($(".yzm").val() != $(".yzm-text").html()) {
+                            alert("验证码不正确");
+                            showCode();
+                            return;
+                        }
+                        regSave();
+                        return;
+                    }
+                }
+                alert('请核实输入的信息！')
+            })
+        }
+
+        // 用户名前端格式验证函数
+        function checkUserNameFront() {
+            let oUserName = $('#username');
+            let reg = /^\w{6,18}$/;
+            if (reg.test(oUserName.val())) {
+                isCheck.user = true;
+                return true;
+            } else {
+                $('#nameSpan').html("×,格式不正确");
+                isCheck.user = false;
+                return false;
+            }
+        }
+
+        // 用户名后端验证函数  ajax
+        function checkUserNameBack() {
+            $.get(
+                "../php/username.php",
+                {
+                    "username": $('#username').val()
+                },
+                (result) => {
+                    if (result == "1") {
+                        $("#nameSpan").css("color", "red").html("用户名已经存在");
+                        hasUser = true;
+                    } else {
+                        $("#nameSpan").css("color", "green").html("用户名可使用");
+                        hasUser = false;
+                    }
+                }
+            )
+        }
+
+        // 密码格式验证函数
+        function checkPassword() {
+            let passDom = $('#password1');
+            let passSpan = $("#pass-box").children();
+            passSpan.css("backgroundColor", "white");
+
+            let reg = /^\w{6,18}$/;
+            if (reg.test(passDom.val())) {
+                $("#ps1Span").html("√");
+                isCheck.pass = true;
+
+                //1、统计字符类型的个数
+                let regLetter = /[a-zA-Z]/;
+                let regNum = /[0-9]/;  //数字
+                let regLine = /[_]/;  //划线
+                let count = 0;
+                if (regLetter.test(passDom.val())) {
+                    count++;
+                }
+                if (regNum.test(passDom.val())) {
+                    count++;
+                }
+                if (regLine.test(passDom.val())) {
+                    count++;
+                }
+                switch (count) {
+                    // 强：三种字符
+                    case 3: passSpan[2].style.backgroundColor = "green";
+                    // 中：两种字符
+                    case 2: passSpan[1].style.backgroundColor = "yellow";
+                    // 弱：一种字符
+                    case 1: passSpan[0].style.backgroundColor = "red";
+                    default: ;
+                }
+
+            } else {
+                isCheck.pass = false;
+                $("#ps1Span").html("×");
+            }
+        };
+
+        // 确认密码验证函数
+        function checkPassword2() {
+            let pass2Dom = $("#password2");
+            if (pass2Dom.val() === $("#password1").val()) {
+                isCheck.pass2 = true;
+                $("#ps2Span").html("√");
+            } else {
+                isCheck.pass2 = false;
+                $("#ps2Span").html("×");
+            }
+        };
+
+        // 写入验证码
+        function showCode() {
+            $(".yzm-text").html(getCode(4));
+        }
+
+        // 获取验证码
+        function getCode(n) {
+            let str = "";
+            for (let i = 0; i < n; i++) {
+                str = str + parseInt(Math.random() * 10);
+            }
+            return str;
+        }
+
+        // 发送验证码
+        function sendCode() {
+            $.get("../php/code.php", {
+                "code": $(".yzm-text").html()
+            });
+        }
+
+        //先写 注册请求函数 ajax
+        function regSave() {
+            console.log($('.change'))
+            if ($('.change')[0].checked === false) {
+                window.alert('阅读并同意网站的使用条件及隐私声明。')
+            } else {
+                let str = `username=${$('#username').value}&userpass=${$('#password1').value}`;
+                $.post(
+                    '../php/reg.php',
+                    {
+                        "username": $('#username').val(),
+                        "userpass": $('#password1').val()
+                    },
+                    (result) => {
+                        console.log(typeof (result))
+                        if (result == 1) {
+                            console.log('登录成功')
+                            $("#message-box").html("恭喜您，注册成功！请<a href='./login.html'>登录</a>");
+                        } else {
+                            console.log('登录失败')
+                            $("#message-box").html("不好意思，注册失败！");
+                        }
+                    },
+
+                )
+            }
+        }
+
+    </script>
+</body>
+
+</html>

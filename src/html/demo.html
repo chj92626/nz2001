@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面</title>
+</head>
+<style>
+    ol,
+    ul,
+    li {
+        list-style: none;
+    }
+
+    .red {
+        color: red;
+    }
+
+    li a {
+        color: #333333;
+        font-size: 14px;
+    }
+
+    .size>span {
+        display: inline-block;
+        border: 1px #999999 solid;
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .size>.sizeStyle {
+        color: coral;
+        border: coral 1px solid;
+        background: #c5deff;
+    }
+</style>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <li class="size">
+        <span class="sizeStyle h1 h5">S</span><span>SL</span><span>L</span><span>XXL</span><span>XXXL</span>
+    </li>
+
+    <h3><a href="./list.html?cat_one_id=男装"> </a></h3>
+    <ul id="st" class="main_list"></ul>
+
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script>
+
+
+        $('div').each(function () {
+            $(this).click(function () {
+                $(this).addClass('red').siblings().removeClass()
+            })
+
+        })
+        $('.size span').each(function () {
+            $(document).on('click', '.size span', function () {
+                $(this).addClass('sizeStyle').siblings().removeClass('sizeStyle');
+                console.log($(this).html())
+
+            })
+        })
+
+        $(function () {
+            getAjax(1);
+            // let arr = ['男装','女装']
+            //    arr.forEach(function(k,v){
+            //     console.log(k)
+            //    })
+            // console.log($('#st').html())
+
+            function getAjax() {
+                // let arr = ['男装','女装']
+
+                //     const a =arr[1];
+                // console.log(a)
+
+                let arr = ['男装', '女装']
+                arr.forEach(function (k, v) {
+                    console.log(k)
+
+                    $.ajax({
+                        url: '../php/goods_list.php',
+                        data: {
+                            cat_one_id: k,
+                            line: 6,
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            // console.log($('#st').html())
+                            // console.log(res);
+                            let str = ``;
+                            res.forEach(function (item) {
+
+                                str += `
+                        <li>
+                            <div class="pic"><a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_big_logo}" alt=""></a></div>
+                            
+                        </li>
+                        `;
+
+                            });
+                            $('.main_list').html(str);
+                            console.log(res.cat_one_id)
+                            // console.log($('#st').html())
+
+                        }
+                    })
+                    $('.main_list').html('?????????')
+                })
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

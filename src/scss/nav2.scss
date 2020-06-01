@@ -1,0 +1,28 @@
+$height:30px;
+#nav2{
+    // margin-top: 100px;
+    height: $height;
+    text-align: left;
+    ul{
+        height: $height;
+        background: #212f40;
+    
+    li{float: left;
+        line-height: $height;
+        font-size: 14px;
+        span{color: #adadad;}
+        a{color: #ffffff;margin: 0 10px;}
+        &:hover  a{color: #ff7300;}
+    }
+    }
+    ol{
+        height: $height;
+        li{float: left;
+            line-height: $height;
+            font-size: 14px;
+            span{color: #adadad;}
+            a{color: #ffffff;margin: 0 10px;}
+            &:hover  a{color: #ff7300;}
+        }
+    }
+}

@@ -1,0 +1,36 @@
+/* css reset */
+*{margin: 0;padding: 0;}
+ol,ul,li{list-style: none;}
+a{text-decoration: none;}
+h1,h2,h3{ font-size:16px;}
+
+.box{margin: 20px auto;width: 310px ;height: 100%; background:white; text-align: center;}
+.box .login_box{text-align: left; border:  1px solid #999999; padding:10px 20px ; margin-top: 20px ;}
+.box .login_box>p{font-size: 24px; font-weight: 800; margin-top:0;}
+.box .login_box input{outline: none; border: 1px #999999 solid ; margin-top: 10px;height: 24px;width: 65%;}
+#code{width: 44%;}
+.box .login_box .login{width: 100%;height:30px; margin: 15px 0;background-image: linear-gradient(#f6db9b,#f0c24d ) ; border: none; outline: none;}
+.box .login_box .login:hover{background: #f0c24d;}
+.box .login_box>span,a{color: #0055aa; font-size: 12px;margin: 2px;cursor: pointer;}
+.box .login_box .fps{height: 50px;display: none;}
+.box .login_box .fps>p>a{color: #0055aa; }
+.box .login_box .fps>p>a:hover{ color: #e47923; text-decoration: underline;}
+.box .login_box .fps>p{margin: 3px;}
+.box .login2_box{position: relative;border-top: 0.5px solid #999999; margin-top: 10px;padding: 10px 0;}
+.box .login2_box .login2_box_header{position: absolute;font-size: 12px;left: 50%;transform: translateX(-50%); top:-10px;width: 80px;height: 20px;background: white;text-align: center;}
+.box .login2_box .login2_box_btn{width: 100%;line-height: 26px;background-image: linear-gradient(#15d71f, #62d71f);text-align: center;color: white;margin: 20px 0; cursor: pointer;}
+.box .login2_box>li{font-size: 12px;}
+
+.box .login_box2{position: relative;border-top: 0.5px solid #999999; margin-top: 30px;padding: 10px 0;}
+.box .login_box2 .login_box2_header{position: absolute;font-size: 12px;left: 50%;transform: translateX(-50%); top:-10px;width: 120px;height: 20px;background: white;text-align: center;}
+.box .login_box2 .login_box2_btn{width: 100%;line-height: 26px;background-image: linear-gradient(#fafbfc, #e7e9ec);text-align: center;color: #111111;margin: 20px 0;border: 1px solid #adb1b8;cursor: pointer;}
+.box .login_box2 .login_box2_btn:hover{background: #e7e9ec;}
+.box .login_box2>li{font-size: 12px;}
+
+#message-box{font-size: 12px; text-align: center;}
+
+#footer{width: 100%;  border-top:1px transparent solid;border-image:linear-gradient(to right,white, #cacaca,white) 1 10 ;height: 100px; text-align: center;}
+#footer>ul{margin: auto;display: flex;justify-content: center;}
+#footer>ul>li{margin:20px; }
+#footer>ul>li>a:hover{ color: #e47923; text-decoration: underline;}
+#footer>p{font-size: 14px;color: #999999;}

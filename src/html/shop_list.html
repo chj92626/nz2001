@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon商品列表页</title>
+    <meta name="referrer" content="never">
+    <link rel="stylesheet" href="../scss/common.css">
+    <link rel="stylesheet" href="../scss/nav2.css">
+    <link rel="stylesheet" href="../scss/shop_list.css">
+    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../jquery-pagination/pagination.css">
+    <link rel="stylesheet" href="../swiper-5.4.1/package/css/swiper.min.css">
+</head>
+
+<body>
+    <!-- 页面头部开始 -->
+    <header id="header" class="container-fluid clear">
+        <div class="header-logo1 l">
+            <a href="./index.html"><img src="../images/header_login1.png" alt=""></a>
+            <div class="header_login1_text">
+                <p>加入亚马逊Prime，从此免运费</p>
+                <p> 亚马逊Prime会员可享海外购美/英/日/德跨境免邮，全年无限次！更有免费无限次阅读电子书服务</p>
+                <a href="./Prime.html">&gt; 立即加入</a>
+            </div>
+        </div>
+        <div class="header-text l clear">
+            <div class="header-text-list">
+                <div class="header-text-all">
+                    <li>亚马逊设备</li>
+                    <li>Kindle商店</li>
+                    <li>应用程序和游戏</li>
+                    <li>图片</li>
+                    <li>音乐</li>
+                    <li>音乐</li>
+                    <li>音乐</li>
+                    <li>游戏/娱乐</li>
+                    <li>音像</li>
+                    <li>软件</li>
+                    <li>教育音像</li>
+                    <li>手机/通讯</li>
+                    <li>摄像/摄影</li>
+                    <li>电子</li>
+                    <li>数码影音</li>
+                    <li>电脑/IT</li>
+                    <li>办公用品</li>
+                    <li>小家电</li>
+                    <li>大家电</li>
+                    <li>电视/音箱</li>
+                    <li>家用</li>
+                    <li>家具装修</li>
+                    <li>宠物用品</li>
+                    <li>食品</li>
+                    <li>酒品</li>
+                    <li>美容化妆</li>
+                    <li>个护健康</li>
+                    <li>母婴用品</li>
+                    <li>玩具</li>
+                    <li>运动户外休闲</li>
+                    <li>服装鞋包</li>
+                    <li>鞋靴</li>
+                    <li>钟表</li>
+                    <li>珠宝首饰</li>
+                    <li>汽车用品</li>
+                    <li>乐器</li>
+                    <li>礼品卡</li>
+                    <li>Z实惠</li>
+                </div>
+                <input class="header-text-btn" type="text" value="全部分类">
+                <input type="text">
+                <input value="搜索" type="text">
+            </div>
+        </div>
+        <div class="header-logo2 l">
+            <a href=""><img src="../images/header.png" alt=""></a>
+        </div>
+    </header>
+
+    <!-- 导航栏开始 -->
+    <nav id="nav" class="container-fluid clear">
+        <div class="nav_list1">
+            全部商品分类
+        </div>
+
+        <ul class="nav_ul">
+            <li name='shop_car' class="shop_car"><span class='userStr'></span><span class="myLogin">我的</span>亚马逊</li>
+            <li><a href="shop_list.html?cat_one_id=居家生活">居家生活</a></li>
+            <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+            <li><a href="shop_list.html?cat_one_id=手机相机">手机</a></li>
+            <li><a href="shop_list.html?cat_one_id=男装">男装</a></li>
+            <li><a href="shop_list.html?cat_one_id=智能设备">智能设备</a></li>
+        </ul>
+        <div class="nav_list2">
+            <ol class="nav_list_text">
+                <li name='login' class="login login_li">
+                    <div>您好，<span class="myLogin">登录</span><span class='userStr'></span></div>
+                    <div>我的账号</div>
+                    <div class="login_list">
+                        <div name='login' class="login login_btn">立即登录</div>
+                        <p class="login_list_p">新用户？<a href="../html/reg.html">免费注册</a></p>
+                        <ul>
+                            <li><a href="">我的账户</a></li>
+                            <li><a href="">我的订单</a></li>
+                            <li><a href="">我的账户余额</a></li>
+                            <li><a href="">评论已购商品</a></li>
+                            <li><a href="">我的心愿单</a></li>
+                            <li><a href="">为我推荐</a></li>
+                            <li><a href="">我的Prime会员</a></li>
+                            <li><a href="">管理我的内容和设备</a></li>
+                            <li><a href="">我的 Kindle Unlimited</a></li>
+                            <li><a href="">我的应用程序和设备</a></li>
+                            <li><a href="">我要全球开店</a></li>
+
+                            <div id="out_login">退出登录</div>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li name='try' class="try try_li">
+                    <div>免费试享</div>
+                    <div>Prime</div>
+                    <div class="try_list">
+                        <ul>
+                            <li><a href="javaScript:;"><img src="../images/prime.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li name='shop_car' class="shop_car">购物车</li>
+                <li name='wish' class="wish">心愿单</li>
+
+            </ol>
+        </div>
+        <div class="nav_list1_text">
+            <ul>
+                <li>
+                    <a href="shop_list.html?cat_one_id=生活电器">生活电器</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=生活电器">欧式快热炉</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=生活电器">加湿器</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=生活电器">暖风机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=生活电器">小太阳</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=生活电器">除湿机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=生活电器">扫地机器人</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=邮币乐器">邮币乐器</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">电子烟</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">工艺摆设</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">婚庆节庆</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">瑞士军刀</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">影视周边</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=邮币乐器">电子鼓</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href=""><a href="shop_list.html?cat_one_id=男装">男装</a> / <a
+                           href="shop_list.html?cat_one_id=女装">女装</a> /
+                        <a href="shop_list.html?cat_one_id=皮具箱包">箱包</a></a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=男装">男装</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=男装">男装</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=男装">男装</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=男装">男装</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=男装">男装</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href=""><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> / <a
+                           href="shop_list.html?cat_one_id=内衣配饰">内衣配饰</a></a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=珠宝首饰">珠宝首饰</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href=""><a href="shop_list.html?cat_one_id=烹饪厨具">厨具</a> / <a
+                           href="shop_list.html?cat_one_id=智能设备">智能设备</a></a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=烹饪厨具">烹饪厨具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=烹饪厨具">烹饪厨具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=烹饪厨具">烹饪厨具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=烹饪厨具">烹饪厨具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=烹饪厨具">烹饪厨具</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=童装玩具">童装玩具</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=电脑办公">电脑办公</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=手机相机">手机相机</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=手机相机">手机相机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=手机相机">手机相机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=手机相机">手机相机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=手机相机">手机相机</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=手机相机">手机相机</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜</a> </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="shop_list.html?cat_one_id=海外购">海外购</a>
+                    <ol class="clear">
+                        <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+                        <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 二级导航(列表页和详情页) -->
+    <div id="nav2">
+        <ul class="nav2_ul clear">
+            <li><a href="shop_list.html?cat_one_id=海外购">海外购▼</a> </li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=男装">服饰</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=鞋靴">鞋靴</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=数码">数码</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=厨具">厨具</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=母婴">母婴</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=玩具">玩具</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=运动">运动</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=个护">个护</a><span>|</span></li>
+            <ol class=" r">
+                <li><span>|</span><a href="shop_list.html?cat_one_id=品牌">品牌</a></li>
+                <li><span>|</span><a href="shop_list.html?cat_one_id=排行">排行</a></li>
+            </ol>
+
+        </ul>
+
+
+    </div>
+
+    <!-- 商品列表 -->
+    <div id="shopList" class="container">
+        <div class="shopList-main">
+
+            <div class="shopList-main-text">
+                <div class="shopList-main-left">
+                    <p>类别</p>
+                    <ul>
+                        <li><a href="javaScript:;">亚马逊设备</a> </li>
+                        <li><a href="javaScript:;">Kindle商店</a> </li>
+                        <li><a href="javaScript:;">应用程序和游戏</a> </li>
+                        <li><a href="javaScript:;">图片</a> </li>
+                        <li><a href="javaScript:;">音乐</a> </li>
+                        <li><a href="javaScript:;">游戏/娱乐</a> </li>
+                        <li><a href="javaScript:;">音像</a> </li>
+                        <li><a href="javaScript:;">软件</a> </li>
+                        <li><a href="javaScript:;">教育音像</a> </li>
+                        <li><a href="javaScript:;">手机/通讯</a> </li>
+                        <li><a href="javaScript:;">摄像/摄影</a> </li>
+                        <li><a href="javaScript:;">电子</a> </li>
+                        <li><a href="javaScript:;">数码影音</a> </li>
+                        <li><a href="javaScript:;">电脑/IT</a> </li>
+                        <li><a href="javaScript:;">办公用品</a> </li>
+                        <li><a href="javaScript:;">小家电</a> </li>
+                        <li><a href="javaScript:;">大家电</a> </li>
+                        <li><a href="javaScript:;">电视/音箱</a> </li>
+                        <li><a href="javaScript:;">家用</a> </li>
+                        <li><a href="javaScript:;">家具装修</a> </li>
+                        <li><a href="javaScript:;">宠物用品</a> </li>
+                        <li><a href="javaScript:;">食品</a> </li>
+                        <li><a href="javaScript:;">酒品</a> </li>
+                        <li><a href="javaScript:;">美容化妆</a> </li>
+                        <li><a href="javaScript:;">个护健康</a> </li>
+                        <li><a href="javaScript:;">母婴用品</a> </li>
+                        <li><a href="javaScript:;">玩具</a> </li>
+                        <li><a href="javaScript:;">运动户外休闲</a> </li>
+                        <li><a href="javaScript:;">服装鞋包</a> </li>
+                        <li><a href="javaScript:;">鞋靴</a> </li>
+                        <li><a href="javaScript:;">钟表</a> </li>
+                        <li><a href="javaScript:;">珠宝首饰</a> </li>
+                        <li><a href="javaScript:;">汽车用品</a> </li>
+                        <li><a href="javaScript:;">乐器</a> </li>
+                        <li><a href="javaScript:;">礼品卡</a> </li>
+                        <li><a href="javaScript:;">Z实惠</a> </li>
+                    </ul>
+                </div>
+                <div class="shopList-main-right">
+                    <div class="shopList-main-right-pic-list">
+                        <ul class="list_ul clear">
+                            <div class="shopList-main-title"></div>
+                            <!-- <li>
+                                <div class="pic"><a href="../html/detail.html"><img src="../images/广告_.jpg" alt=""></a>
+                                </div>
+                                <div>
+                                    <h3>商品名称</h3>
+                                    <p class="pice">￥<span>商品价格</span></p>
+                                    <p>商品介绍</p>
+                                </div>
+                            </li> -->
+
+                        </ul>
+                        <div class="aaaa"></div>
+                    </div>
+                    <div class="M-box"> </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 商品轮播图 -->
+    <div class="swiper-title container">
+
+    </div>
+    
+    <div class="swiper-container container">
+        <div class="swiper-wrapper">
+          
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="container-fluid footer">
+        <div class=" container footer-list clear">
+            <ul>
+                <li>了解我们
+                    <ol>
+                        <li><a href="javaScript:;">人才招聘</a></li>
+                        <li><a href="javaScript:;">关于我的</a></li>
+                        <li><a href="javaScript:;">新闻中心</a></li>
+                    </ol>
+                </li>
+                <li>合作信息
+                    <ol>
+                        <li><a href="javaScript:;">我要开店</a></li>
+                        <li><a href="javaScript:;">加入联盟</a></li>
+                        <li><a href="javaScript:;">合作伙伴</a></li>
+                    </ol>
+                </li>
+                <li>购物指南
+                    <ol>
+                        <li><a href="javaScript:;">付款与退款</a></li>
+                        <li><a href="javaScript:;">汇款单招领</a></li>
+                        <li><a href="javaScript:;">发货与配送</a></li>
+                        <li><a href="javaScript:;">退货与换货</a></li>
+                    </ol>
+                </li>
+                <li>帮助中心
+                    <ol>
+                        <li><a href="javaScript:;">帮助中心</a></li>
+                    </ol>
+                </li>
+            </ul>
+            <div class="about">
+                <img src="../images/logo.gif" alt="">
+                <ul>
+                    <li><a href="">北京</a></li><span> | </span>
+                    <li><a href="">上海</a></li><span> | </span>
+                    <li><a href="">杭州</a></li><span> | </span>
+                    <li><a href="">广州</a></li><span> | </span>
+                    <li><a href="">成都</a></li><span> | </span>
+                    <li><a href="">天津</a></li>
+                </ul>
+                <p><a href="">使用条件</a><span> | </span><a href="">隐私声明</a></p>
+                <p>版权所有 © 1996-2020，亚马逊公司或其关联公司</p>
+                <p>互联网药品信息服务资格证书 (京)-非经营性-2012-0005</p>
+                <p>京公网安备110105004167号增值电信业务经营许可证：合字 B2-20090004营业执照：110105001308484</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 返回顶部 -->
+    <div class="container-fluid">
+        <div class="footer-back">返回顶部</div>
+    </div>
+
+    <script src="../js/cookie.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../jquery-pagination/jquery.pagination.js"></script>
+    <script src="../swiper-5.4.1/package/js/swiper.min.js"></script>
+
+    <script>
+        // 点击展开类别
+        $(function () {
+            $('.header-text-btn').click(function () {
+                $(".header-text-all").fadeToggle(1000, "linear")
+            })
+
+        })
+
+        // 登录后购物车变化
+        $(function () {
+            welcome();
+            $('#out_login').click(function () {
+                removeCookie('username');
+                window.location.href = './index.html';
+            })
+            $('.nav_list1_text').css('display', 'none');
+            $('.nav_list1').click(function () {
+                $(".nav_list1_text").fadeToggle(1000, "linear");
+            })
+
+            // 动态生成页面
+            let str = decodeURIComponent(window.location.search);
+            str = str.substr(1);
+            const arr = str.split('=');
+            getAjax(1);
+
+            function getAjax(page) {
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: arr[1],
+                        page: page,
+                        line: 12,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                        let str = ``;
+                        str += `<div class="shopList-main-title">${res[0].cat_one_id}</div>`;
+                        res.forEach(function (item) {
+                           
+                            str += `
+                                <li>
+                                    <div class="pic"><a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_big_logo}" alt=""></a></div>
+                                    <div>
+                                    <h3>${item.cat_id}</h3>
+                                    <p class="pice">￥<span>${item.goods_price}</span></p> 
+                                    <p>${item.goods_name}</p> 
+                                    </div>
+                                </li>
+                                `;
+                        });
+                        $('.list_ul').html(str);
+                        // 分页显示
+                        $('.M-box').pagination({
+                            mode: 'fixed',
+                            pageCount: res[0].sumPage,
+                            totalData: res[0].row,
+                            current: res[0].page,
+                            showData: 12,
+                            activeCls: 'active',
+                            coping: true,
+                            homePage: '首页',
+                            endPage: '末页',
+                            prevContent: '上页',
+                            nextContent: '下页',
+                            callback: function (result) {
+                                let p = result.getCurrent();
+                                getAjax(p);
+                            },
+                        });
+                    },
+
+                });
+            }
+
+            // 轮播图插件 
+            $(function () {
+                // 可修改轮播图图片，修改 cats_id 
+                let cats_id = '大家电';
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: cats_id,
+                        page: 1,
+                        line: 18,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res)
+                        let htmlstr = ""
+                        res.forEach((msg) => {
+                            $('.swiper-title').html(cats_id)
+                            htmlstr += ` 
+                            <div class="swiper-slide">
+                                <div class="shop_pic">
+                                    <a  href="../html/detail.html?goods_id=${msg.goods_id}">
+                                    <img src="${msg.goods_small_logo}" alt="">
+                                    </a>
+                                    <h3>${msg.cat_id}</h3>
+                                    <p class="pice">￥<span>${msg.goods_price}</span></p> 
+                                </div>
+                            </div>`
+                        })
+                        //
+                        $(".swiper-container .swiper-wrapper").html(htmlstr)
+                        var mySwiper = new Swiper('.swiper-container', {
+                            direction: 'horizontal',
+                            // autoplay:true,
+                            loop: true,
+                            // 循环模式选项
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            // 如果需要分页器
+                            pagination: {
+                                el: '.swiper-pagination',
+                                type: 'fraction',
+                            },
+                            // 如果需要前进后退按钮
+                            navigation: {
+                                nextEl: '.swiper-button-next',
+                                prevEl: '.swiper-button-prev',
+                            },
+
+                        })
+                    },
+                });
+            })
+       
+        })
+
+        // 添加cookie
+        function welcome() {
+            let username = getCookie("username");
+            if (username === null) {
+
+                // 登录后显示登录用户名称
+                $('.userStr').css('display', 'none')
+                $('.myLogin').css('display', 'inline-block')
+
+                // 点击购物车没有登陆跳转登录
+                $('.shop_car').click(function () {
+                    let bool = window.confirm('您还没有登录，点击确定前往登录！');
+                    if (bool === true) {
+                        window.location.href = `../html/login.html?${window.location.href}`;
+                    }
+                })
+                $('.login').click(function () {
+                    window.location.href = `./login.html?${window.location.href}`;
+                })
+            } else {
+                $('.userStr').css('display', 'inline-block')
+                $('.myLogin').css('display', 'none')
+                $('.userStr').html(username);
+                $('.login_btn').remove();
+                $('.login_list_p').remove();
+                $('.login_list ul').css('border', 'none')
+                $('#out_login').css('display', 'block')
+                $('.shop_car').click(function () {
+                    window.location.href = './shop_car.html'
+                })
+            }
+        }
+
+        // <!-- 返回顶部 -->
+        $('.footer-back').click(function () {
+            $('html , body').animate({ scrollTop: 0 }, 'slow');
+        })
+    </script>
+</body>
+
+</html>

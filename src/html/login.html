@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon登录</title>
+    <link rel="stylesheet" href="../scss/login.css">
+</head>
+
+<body>
+    <div class="box">
+        <img src="../images/header_login.png" alt="">
+        <div class="login_box">
+            <p>登录</p>
+            账 号：<input type="text" name="username" id="username" autocomplete="off"><br>
+            密 码：<input type="password" name="userpass" id="password"><br>
+            验证码：<input id="code" type="text"> <span id="codeSpan"></span> <br />
+            <input type="button" name="login" value="登录" class="login">
+            <div id="message-box"></div>
+
+            <span class="fps-btn">▶</span><a href="javaScript:;">需要帮助?</a>
+            <div class="fps">
+                <p><a href="javaScript:;">忘记密码</a></p>
+                <p><a href="javaScript:;">其他问题</a></p>
+            </div>
+            <ul class="login2_box">
+                <p class="login2_box_header">其他登录方式</p>
+                <li class="login2_box_btn"><span></span>微信账号登录</li>
+                <li>登录即表示您同意网站的<a href="javaScript:;">使用条件</a>及<a href="javaScript:;">隐私声明</a> </li>
+            </ul>
+        </div>
+        <ul class="login_box2">
+            <p class="login_box2_header">Amazon的新客户？</p>
+            <li class="login_box2_btn">创建您的Amazon账号</li>
+            <li>登录即表示您同意网站的<a href="javaScript:;">使用条件</a>及<a href="javaScript:;">隐私声明</a> </li>
+        </ul>
+
+    </div>
+
+    <div id='footer'>
+        <ul>
+            <li><a href="javaScript:;">使用条件</a></li>
+            <li><a href="javaScript:;">隐私声明</a></li>
+            <li><a href="javaScript:;">帮助</a></li>
+        </ul>
+        <p>版权所有 © 1996-2020，亚马逊公司或其关联公司</p>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/cookie.js"></script>
+
+    <script>
+        
+        // 获取焦点改变边框样式
+        $(function () {
+            $('.fps-btn').click(function () {
+                $('.fps').slideToggle(100)
+            })
+            $('.login_box2_btn').click(function () {
+                window.location.href = './reg.html';
+            })
+
+            $('[name="username"]').focus(function () {
+                $('[name="username"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="username"]').blur(function () {
+                $('[name="username"]').css('border', '1px #999999 solid')
+            })
+            $('[name="userpass"]').focus(function () {
+                $('[name="userpass"]').css('border', '1px #fa4c07 solid')
+            })
+
+            $('[name="userpass"]').blur(function () {
+                $('[name="userpass"]').css('border', '1px #999999 solid')
+            })
+            $('#code').focus(function () {
+                $('#code').css('border', '1px #fa4c07 solid')
+            })
+
+            $('#code').blur(function () {
+                $('#code').css('border', '1px #999999 solid')
+            })
+        })
+
+  
+        // 登录验证 主程序
+        $(function () {
+            // 1、产生验证码
+            showCode();
+
+            // 2、点击span，重新产生验证码
+            $("#codeSpan").click(function () {
+                showCode();
+                // 把验证码发到后端
+                sendCode();
+            });
+
+            // 3、登录
+            $(".login").click(function () {
+                if ($("#code").val() != $("#codeSpan").html()) {
+                    alert("验证码不正确");
+                    showCode();
+                    return;
+                }
+                login();
+
+            })
+        })
+
+        // 生成验证码
+        function showCode() {
+            $("#codeSpan").html(getCode(4));
+        }
+
+        // 设定验证码
+        function getCode(n) {
+            let str = "";
+            for (let i = 0; i < n; i++) {
+                str = str + parseInt(Math.random() * 10);
+            }
+            return str;
+        }
+
+        // 后端发送验证码
+        function sendCode() {
+            $.get(
+                "../php/code.php",
+                 {
+                "code": $("#codeSpan").html()
+            }
+            );
+        }
+
+        // 登录函数
+        function login() {
+            $.post(
+                "../php/login.php",
+                {
+                    "username": $("#username").val(),
+                    "userpass": $("#password").val()
+                },
+
+                show
+            );
+        }
+
+        // 登录效果
+        function show(result) {
+            if (result == 1) {
+                window.alert('登录成功,点击确定返回上一页面');
+                // 获取导航栏地址
+                let str = decodeURIComponent(window.location.search);
+                str = str.substr(1);
+                console.log(str)
+                // 1、存储cookie
+                setCookie("username", $("#username").val(), 7);
+                // 2、显示提示信息
+                let count = 5;
+                $("#message-box").html(`亲，恭喜您，登录成功，${count}秒钟后，返回<a href="${str}">上一页</a>`);
+                let myTimer = setInterval(() => {
+                    count--;
+                    if (count == 0) {
+                        window.clearInterval(myTimer);
+                        window.location.href = `${str}`;
+                        return;
+                    }
+                    $("#message-box").html(`亲，恭喜您，登录成功，${count}秒钟后，返回<a href="${str}">上一页</a>`);
+                }, 1000);
+            } else {
+                $("#message-box").html(`请确认账号密码再登录！`).css('color', 'red');
+                showCode();
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

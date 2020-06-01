@@ -1,0 +1,44 @@
+#content{margin-top: 10px;}
+#content .content_left{width: 860px;}
+
+#content .content_left .content_left_text1{  padding: 10px;box-sizing: border-box;} 
+#content .content_left .content_left_text1>div{ float: left; margin: 4px;height: 160px; width: 260px; float: left;cursor: pointer;text-align: center;;border-right: 1px solid #999999;overflow: hidden;padding: 0 5px;}
+#content .content_left .content_left_text1>div:nth-of-type(3){border: none;}
+#content .content_left .content_left_text1>div>h2{color: peru;font-size: 18px;}
+#content .content_left .content_left_text1>div>h2>span{color: #333333;}
+#content .content_left .content_left_text1>div>h2>span:hover{color: rgb(255, 119, 0);}
+#content .content_left .content_left_text2{  padding: 10px;box-sizing: border-box;width: 100%;margin-top: 10px;}
+#content .content_left .content_left_text2>p>span{font-size: 26px;font-weight: 700;margin-right: 10px;}
+#content .content_left .content_left_text2>p>a{color:steelblue; font-size: 14px;}
+#content .content_left .content_left_text2>p>a:hover{color: #fa8423;text-decoration: underline;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul{width: 100%;margin-top: 10px;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li{height: 300px; width: 200px;float: left;margin: 0 4px;background: #fcfcfc;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li>a>img{width: 100%;display: block;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li>p{margin: 5px 20px;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li .price{text-align: center;color: #ce752c;margin: 10px 0;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li .id_name{font-size: 20px; font-weight: 600;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul>li .data_time{font-size: 12px;}
+
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul2{border: 1px #cfcfcf solid;width: 100%;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul2>li{height: 240px; width: 208px;float: left;margin: 0 1px;background: #fcfcfc;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul2>li>a>img{width: 100%;display: block;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul2>li>p{margin: 5px 20px;}
+#content .content_left .content_left_text2 .content_left_text2_shop_list>.shop_list_ul2>li .price{color: #ce752c;margin: 10px 20px;}
+
+#content .content_left .content_left_text3{width: 860px;}
+#content .content_left .content_left_text3>p>span{font-size: 26px;font-weight: 700;}
+#content .content_left .content_left_text3 .content_left_text2_shop_list>.shop_list_ul3{width: 100%;margin-top: 10px;}
+#content .content_left .content_left_text3 .content_left_text2_shop_list>.shop_list_ul3>li{float: left;height: 190px;width: 210px; margin:0 2px;}
+#content .content_left .content_left_text3 .content_left_text2_shop_list>.shop_list_ul3>li img{width: 100%; }
+
+
+
+#content .content_right{ width: 260px;height: 100%; background: #fafafa;}
+#content .content_right .content_right_text1{width: 100%;width: 240px;margin: 10px;}
+#content .content_right .content_right_text1>img{width: 100%; display: block;border-bottom: 1px solid #cfcfcf;padding-bottom: 10px;margin-bottom: 10px;}
+#content .content_right .content_right_text>p{text-align: right;font-size: 12px;}
+#content .content_right .content_right_text1 .right_pic_list{display: flex;flex-direction: column;align-items: center;border-bottom: 1px solid #cfcfcf;padding-bottom: 10px;margin-bottom: 8px;}
+#content .content_right .content_right_text1 .right_pic_list>p{font-size: 14px;margin:10px 0;color: #333333;}
+#content .content_right .content_right_text1 .right_pic_list>img{width: 66px;height: 90px;margin-bottom: 8px;}
+#content .content_right .content_right_text1, .right_pic_list>a{color: steelblue;font-size: 12px;}
+#content .content_right .content_right_text1 .right_pic_list>a:hover{color: #fa8423;text-decoration: underline;}

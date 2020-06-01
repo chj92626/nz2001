@@ -1,0 +1,35 @@
+
+body{background: #ebebeb;}
+#car-nav{height: 30px;line-height: 30px;background:rgb(255, 253, 253) ; }
+#car-nav li{font-size: 12px; float: left; margin-right: 10px;}
+#car-nav li,a{
+    color: #333333;
+&:hover{
+    color:#e47923; text-decoration: underline;
+}
+}
+#shop-car-show{background: rgb(238, 89, 89);}
+#shop-car-show .shop-car-show-title{
+    float: left;
+    width: 900px;
+}
+#shop-car-show .shop-car-show-title .show-shop{display: flex; justify-content: space-between; padding-top: 20px;}
+#shop-car-show .shop-car-show-title .show-shop li{font-size: 14px;}
+#shop-car-show .shop-car-show-title .show-shop li h2:nth-of-type(1){
+font-weight: 800;font-size: 20px;
+}
+
+#shop-car-show-main{width: 100%;border-top: 2px black solid;} 
+.shop-car-show-main>div{float: left;}
+.shop-car-show-main>.shop-pic{width: 120px;height: 100px;}
+.shop-car-show-main>.shop-pic>img{display: block;width: 100%;}
+.shop-car-show-main>.shop-price{width: 130px;}
+.shop-car-show-main>.shop-text{width: 450px;}
+.shop-car-show-main>.shop-num{float: right;}
+.shop-car-show-main>.shop-num>button{width: 20px;}
+#shop-car-show .shop-car-pay{
+    width: 300px;
+    float: right;
+    text-align: center;
+    background-color: cyan;
+}
