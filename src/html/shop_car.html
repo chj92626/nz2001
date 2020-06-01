@@ -270,10 +270,12 @@
             <li><a href="javaScript:;">了解更多</a></li>
         </ul>
     </div>
+
+    <!-- 购物车内容 -->
     <div id="shop-car-show" class="container-fluid">
         <div class="container clear">
             <div class="shop-car-show-title">
-                <ul class="show-shop ">
+                <ul class="show-shop">
                     <li>
                         <h2>购物车</h2>
                     </li>
@@ -295,42 +297,30 @@
                     <p>1</p>
                     <p>1</p>
                     <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
                 </div>
-
             </div>
             <div class="shop-car-show-main clear">
                 <div class="shop-pic"><img src="../images/我的订单.jpg" alt=""></div>
-                <div class="shop-text">商品内容
+                <div class="shop-text">
                     <p>goods_name</p>
                     <p>cat_one_id +
                         cat_three_id +
                         cat_two_id
                     </p>
                     <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
-                    <p><span>删除</span> | <span>加入收藏夹</span></p>
+                    <p><span id='del'>删除</span> | <span id='collect'>加入收藏夹</span></p>
                 </div>
-                <div class="shop-price">价格</div>
-                <div class="shop-num"><button name="lost">-</button>数量<button name="add">+</button></div>
+                <div class="shop-price"><span>￥1,559.23</span></div>
+                <div class="shop-num"><button name="lost">-</button>num<button name="add">+</button></div>
             </div>
-
+            <div class="shop-amount">
+                <p>小计 (2 件商品): <span class="sp1">￥1,559.23</span></p>
+            </div>
         </div>
     </div>
-    1
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
     <!-- 页脚 -->
     <div class="container-fluid footer">
         <div class=" container footer-list clear">
@@ -353,7 +343,7 @@
                     <ol>
                         <li><a href="javaScript:;">付款与退款</a></li>
                         <li><a href="javaScript:;">汇款单招领</a></li>
-                        <li><a href="javaScript:;">发货与配送</a></li>
+                        <li><a href="javaScrip:;">发货与配送</a></li>
                         <li><a href="javaScript:;">退货与换货</a></li>
                     </ol>
                 </li>
@@ -390,13 +380,14 @@
 
     <!-- 点击展开类别 -->
     <script>
+        // 点击展开全部
         $(function () {
             $('.header-text-btn').click(function () {
                 $(".header-text-all").fadeToggle(1000, "linear")
             })
         })
 
-    // 登录后购物车变化
+        // 登录后购物车变化
         $(function () {
             welcome();
             $('#out_login').click(function () {
@@ -546,10 +537,13 @@
             }
         }
 
-    // 返回顶部
+        // 返回顶部
         $('.footer-back').click(function () {
             $('html , body').animate({ scrollTop: 0 }, 'slow');
         })
+
+
+
     </script>
 
 

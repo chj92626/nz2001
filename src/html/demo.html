@@ -70,57 +70,57 @@
             })
         })
 
-        $(function () {
-            getAjax(1);
-            // let arr = ['男装','女装']
-            //    arr.forEach(function(k,v){
-            //     console.log(k)
-            //    })
-            // console.log($('#st').html())
+        // $(function () {
+        //     getAjax(1);
+        //     // let arr = ['男装','女装']
+        //     //    arr.forEach(function(k,v){
+        //     //     console.log(k)
+        //     //    })
+        //     // console.log($('#st').html())
 
-            function getAjax() {
-                // let arr = ['男装','女装']
+        //     function getAjax() {
+        //         // let arr = ['男装','女装']
 
-                //     const a =arr[1];
-                // console.log(a)
+        //         //     const a =arr[1];
+        //         // console.log(a)
 
-                let arr = ['男装', '女装']
-                arr.forEach(function (k, v) {
-                    console.log(k)
+        //         let arr = ['男装', '女装']
+        //         arr.forEach(function (k, v) {
+        //             console.log(k)
 
-                    $.ajax({
-                        url: '../php/goods_list.php',
-                        data: {
-                            cat_one_id: k,
-                            line: 6,
-                        },
-                        type: 'get',
-                        dataType: 'json',
-                        success: function (res) {
-                            // console.log($('#st').html())
-                            // console.log(res);
-                            let str = ``;
-                            res.forEach(function (item) {
+        //             $.ajax({
+        //                 url: '../php/goods_list.php',
+        //                 data: {
+        //                     cat_one_id: k,
+        //                     line: 6,
+        //                 },
+        //                 type: 'get',
+        //                 dataType: 'json',
+        //                 success: function (res) {
+        //                     // console.log($('#st').html())
+        //                     // console.log(res);
+        //                     let str = ``;
+        //                     res.forEach(function (item) {
 
-                                str += `
-                        <li>
-                            <div class="pic"><a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_big_logo}" alt=""></a></div>
+        //                         str += `
+        //                 <li>
+        //                     <div class="pic"><a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_big_logo}" alt=""></a></div>
                             
-                        </li>
-                        `;
+        //                 </li>
+        //                 `;
 
-                            });
-                            $('.main_list').html(str);
-                            console.log(res.cat_one_id)
-                            // console.log($('#st').html())
+        //                     });
+        //                     $('.main_list').html(str);
+        //                     console.log(res.cat_one_id)
+        //                     // console.log($('#st').html())
 
-                        }
-                    })
-                    $('.main_list').html('?????????')
-                })
+        //                 }
+        //             })
+        //             $('.main_list').html('?????????')
+        //         })
 
-            }
-        })
+        //     }
+        // })
 
 
     </script>

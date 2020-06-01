@@ -315,7 +315,7 @@
                     其他相关
                 </div>
                 <div class="right-list2">
-                    <h3><a id="st" href="./list.html?cat_one_id=居家生活">居家生活 &gt;</a></h3>
+                    <h3><a id="st" href="./list.html?cat_one_id=居家生活"> </a></h3>
                     <ul class="main_list">
                         <!-- <li>
                             <div class="pic">
@@ -391,6 +391,7 @@
     <script src="../js/cookie.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../jquery-pagination/jquery.pagination.js"></script>
+    <script src="../js/amplify.js"></script>
 
     <!-- 点击标题全部菜单显示 -->
     <script>
@@ -402,7 +403,7 @@
         })
 
 
-    // 登录后购物车变化
+        // 登录后购物车变化
         $(function () {
             welcome();
             $('#out_login').click(function () {
@@ -449,32 +450,17 @@
 
 
 
-     // 动态生成详情页面 
-       
+        // 动态生成详情页面 
+
         let str = decodeURIComponent(window.location.search);
         str = str.substr(1);
         const arr2 = str.split('=');
         var one_id = '';
         let result = [];
-
         getAjax()
         function getAjax() {
             var index = 1;
-            $('#shopList').on('click', function (e,index) {
-                if (e.target.getAttribute('name') === 'jia') {
-                    index++;
-                    console.log(index)
-                }
-                if (e.target.getAttribute('name') === 'jian') {
-                    if(index==1){
-                        index =1;
-                    }else{
-                        index--;
-                    }
-                }
-                return index;
-            })
-            // 数量改变不了  
+          
             console.log(index)
 
             $.ajax({
@@ -489,73 +475,47 @@
                     console.log(res)
                     let str = '';
                     str = `
-                <ol>
-                    <li id='one_id' name="${res.cat_one_id}"><a href="">${res.cat_one_id}</a></li> &gt; 
-                    <li><a href="">${res.cat_two_id}</a></li> &gt; 
-                    <li class="active"><a href="" >${res.cat_three_id}</a></li>
-                </ol>
-                <ul class="s_img">
-                    <li class="active"><img src="${res.goods_small_logo}" alt=""></li>
-                </ul>
-                <div class="m_img">
-                    <img class="image" src="${res.goods_big_logo}" alt="">
-                    <div class="mask"></div>
-                    <div class="b_img" >
-                        <img src="${res.goods_big_logo}" alt="">
-                    </div>
-                </div>
-                <div class="text">
-                    <ul>
-                        <h2>${res.cat_id}</h2>
-                        <li><a href="">${res.goods_name}</a></li>
-                        <li class="pice">￥<span>${res.goods_price}</span> <span class="font">收藏</span><span>关注</span></li>
-                        <li class="vip">会员优惠10元</li>
-                        <li class="size"><span class="sizeStyle">S</span><span>SL</span><span>L</span><span>XXL</span><span>XXXL</span></li>
-                        <li class="num"><button name="jian">-</button><span>${index}</span><button name="jia">+</button></li>
-                    </ul>
-                    <div class="btn">
-                        <button class="add_cart" name="inCart">加入购物车</button>
-                        <button name="inCart">立即购买</button>
-                    </div>   
-                </div>
-                
-                <div class="introduce"> 
-                    ${res.goods_introduce}
-                </div>
-                `;
+                            <ol>
+                                <li id='one_id' name="${res.cat_one_id}"><a href="">${res.cat_one_id}</a></li> &gt; 
+                                <li><a href="">${res.cat_two_id}</a></li> &gt; 
+                                <li class="active"><a href="" >${res.cat_three_id}</a></li>
+                            </ol>
+                            <ul class="s_img">
+                                <li class="active"><img src="${res.goods_small_logo}" alt=""></li>
+                            </ul>
+                            <div class="m_img">
+                                <img class="image" src="${res.goods_big_logo}" alt="">
+                                <div class="mask"></div>
+                                <div class="b_img" >
+                                    <img src="${res.goods_big_logo}" alt="">
+                                </div>
+                            </div>
+                            <div class="text">
+                                <ul>
+                                    <h2>${res.cat_id}</h2>
+                                    <li><a href="">${res.goods_name}</a></li>
+                                    <li class="pice">￥<span>${res.goods_price}</span> <span class="font">收藏</span><span>关注</span></li>
+                                    <li class="vip">会员优惠10元</li>
+                                    <li class="size"><span class="sizeStyle">S</span><span>SL</span><span>L</span><span>XXL</span><span>XXXL</span></li>
+                                    <li class="num"><button name="jian">-</button><span>${index}</span><button name="jia">+</button></li>
+                                </ul>
+                                <div class="btn">
+                                    <button class="add_cart" name="inCart">加入购物车</button>
+                                    <button name="inCart">立即购买</button>
+                                </div>   
+                            </div>
+                            
+                            <div class="introduce"> 
+                                ${res.goods_introduce}
+                            </div>
+                        `;
                     $('.list_main_1').html(str);
                 }
-
-            })
-
-            $.ajax({
-                url: '../php/goods_detail.php',
-                data: {
-                    goods_id: arr2[1],
-                },
-                type: 'post',
-                dataType: 'json',
-                success: function (res) {
-                    result = res;
-                    let str = '';
-                    str += `
-                <h3><a id="st" href="./list.html?cat_one_id=${res.goods_id}">${res.cat_one_id} &gt;</a></h3>
-                    <ul class="main_list">
-                        <!-- <li>
-                            <div class="pic">
-                                <a href="../html/detail.html?goods_id=${res.goods_id}"><img src="${res.goods_small_logo}"
-                                         alt=""></a>
-                            </div>
-                        </li> -->
-                    </ul>
-                `;
-                    $('.list_main').html(str);
-                }
-
-            })
+             })
         }
-
-    // 添加购物车
+       
+       
+        // 添加购物车
         $(function () {
             $('#shopList').on('click', '[name="inCart"]', function () {
                 let username = getCookie("username");
@@ -597,7 +557,7 @@
         })
 
 
-    // 选择型号大小 数量
+        // 选择型号大小 数量
 
         $(function () {
             $('.size span').each(function () {
@@ -608,14 +568,21 @@
 
             // 数量选择
             $('#shopList').on('click', '.size span', function () {
-                    $(this).addClass('sizeStyle').siblings().removeClass()
-                })
+                $(this).addClass('sizeStyle').siblings().removeClass()
+            })
 
         })
 
+        $(function () {
 
+            // 获取放大镜父级标签
+            const oBox = document.querySelector('#shopList');
+            // 执行构造函数,生成实例化对象
+            const setAmplify = new Amplify(oBox);
+            setAmplify.init();
+        })
 
-    // 返回顶部
+        // 返回顶部
         $('.footer-back').click(function () {
             $('html , body').animate({ scrollTop: 0 }, 'slow');
         })
