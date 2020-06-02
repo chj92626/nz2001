@@ -8,39 +8,72 @@ body{background: #ebebeb;}
     color:#e47923; text-decoration: underline;
 }
 }
-#shop-car-show{  background: white;}
-#shop-car-show .shop-car-show-title{
-    float: left;
-    width: 900px;
-    border-top:1px transparent solid;border-image:linear-gradient(to right,white, gray,white) 1 10 ;
-}
-#shop-car-show .shop-car-show-title .show-shop{display: flex; justify-content: space-between; padding-top: 20px;
-    border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, gray,white) 1 10 ;}
-#shop-car-show .shop-car-show-title .show-shop li{font-size: 14px;}
-#shop-car-show .shop-car-show-title .show-shop li h2:nth-of-type(1){
-font-weight: 800;font-size: 20px;
-}
-// .shop-car-show-main{width: 100%;} 
-.shop-car-show-main{width: 900px; border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, gray,white) 1 10 ;}
-.shop-car-show-main>div{float: left;}
-.shop-car-show-main>.shop-pic{width: 120px;height: 100px;}
-.shop-car-show-main>.shop-pic>img{display: block;width: 100%;}
-.shop-car-show-main>.shop-price{width: 130px;}
-.shop-car-show-main>.shop-text{width: 450px;}
-.shop-car-show-main>.shop-num{float: right;}
-.shop-car-show-main>.shop-num>button{width: 20px;}
-#shop-car-show .shop-car-pay{
-    width: 300px;
-    float: right;
+
+#shop-car-show{background: white; }
+.car-show{display: flex;}
+.car-show .car-show1{
+    background: #c9d48c; display: flex;}
+
+.car-show .car-show1{
+    flex: 1;
+    display: flex;
+    flex-direction: column;}
+
+.car-show .car-show2{
+    width: 280px; 
     text-align: center;
-    padding-left: 40px;
+    padding-left:10px;
     box-sizing: border-box;
-    
-    
+background: #d48c8c;}
+
+
+#shop-car-show .car-show .car-show1 .shop-car-show-title{
+    border-top:1px transparent solid;
+    border-image:linear-gradient(to right,white, gray,white) 1 10 ;
 }
-#shop-car-show .shop-car-pay .pay-btn{ width: 220px;height: 80px; background:#f5f5f5 ;border: #ebebeb 1px solid; padding-top: 10px ; box-sizing: border-box;border-radius: 5px;}
+#shop-car-show .shop-car-show-title .show-shop{
+    display: flex; 
+    justify-content: space-between; 
+    padding-top: 20px;
+    border-bottom:1px transparent solid;
+    border-image:linear-gradient(to right,white, gray,white) 1 10 ;}
+    #shop-car-show .shop-car-show-title .show-shop li{line-height: 22px;font-weight: 800;}
+#shop-car-show .shop-car-show-title .show-shop li:nth-of-type(1) input{
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+#shop-car-show .shop-car-show-main>div{
+    border-bottom:1px transparent solid;border-image:linear-gradient(to right,
+    white, gray,white) 1 10 ; 
+} 
+.shop-car-show-main>.shop-list{height: 150px;}
+.shop-car-show-main>.shop-list>div{float: left;}
+.shop-car-show-main>.shop-list>.change{width: 50px;display: flex;justify-content: center; margin-top: 50px;}
+.shop-car-show-main>.shop-list>.change>input{width: 20px;height: 20px;}
+.shop-car-show-main>.shop-list>.shop-pic{width: 120px;background: #f6d29b;}
+.shop-car-show-main>.shop-list>.shop-pic>img{display: block;width: 100%;}
+.shop-car-show-main>.shop-list>.shop-price{width: 180px;background: #edf69b;}
+.shop-car-show-main>.shop-list>.shop-price span{font-size: 14px; color: #fc7c27;}
+.shop-car-show-main>.shop-list>.shop-price span>i{
+    font-size: 24px;
+}
+.shop-car-show-main>.shop-list>.shop-text{width:430px;background: #9ef69b; padding-left: 10px;}
+.shop-car-show-main>.shop-list>.shop-text>p{margin-bottom: 8px;}
+.shop-car-show-main>.shop-list>.shop-num{float: right;background: #9bf6ee;}
+.shop-car-show-main>.shop-list>.shop-num>button{width: 20px;}
+
+.pay-price span{font-size: 14px;color: #fc7c27;}
+.pay-price span>i{
+    font-size: 24px;
+}
+#shop-car-show .shop-car-pay .pay-btn{ width: 260px;height: 80px; background:#f5f5f5 ;border: #dddddd 1px solid; padding-top: 10px ; box-sizing: border-box;border-radius: 5px;}
+
+
+
 #shop-car-show .shop-car-pay .pay-btn .pay{margin-top: 5px;height: 28px;width: 180px;background-image: linear-gradient(#f6db9b,#f0c24d);border: none; outline: none;border-radius: 5px;}
 
 #shop-car-show .shop-car-pay .pay-btn .pay:hover{background: #f0c24d;}
 
-.shop-amount{text-align: right;width: 900px; border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, rgb(114, 113, 113),white) 1 10 ;}
+.shop-amount{text-align: right;border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, rgb(114, 113, 113),white) 1 10 ;}

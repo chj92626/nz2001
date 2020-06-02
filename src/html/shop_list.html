@@ -258,14 +258,18 @@
     <div id="nav2">
         <ul class="nav2_ul clear">
             <li><a href="shop_list.html?cat_one_id=海外购">海外购▼</a> </li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=男装">服饰</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=鞋靴">鞋靴</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=数码">数码</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=厨具">厨具</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=母婴">母婴</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=玩具">玩具</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=运动">运动</a></li>
-            <li><span>|</span><a href="shop_list.html?cat_one_id=个护">个护</a><span>|</span></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=男装">男装</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=男鞋">男鞋</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=女装">女装</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=女鞋">女鞋</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=手机相机">数码</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=烹饪厨具">厨具</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=食品酒水">食品酒水</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=钟表眼镜">钟表眼镜 </a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=奶粉尿裤">母婴</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=童装玩具">玩具</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=其他">其他</a></li>
+            <li><span>|</span><a href="shop_list.html?cat_one_id=个护健康">个护健康</a><span>|</span></li>
             <ol class=" r">
                 <li><span>|</span><a href="shop_list.html?cat_one_id=品牌">品牌</a></li>
                 <li><span>|</span><a href="shop_list.html?cat_one_id=排行">排行</a></li>
@@ -283,7 +287,7 @@
             <div class="shopList-main-text">
                 <div class="shopList-main-left">
                     <p>类别</p>
-                    <ul>
+                    <ul class="shopList-main-left-ul">
                         <li><a href="javaScript:;">亚马逊设备</a> </li>
                         <li><a href="javaScript:;">Kindle商店</a> </li>
                         <li><a href="javaScript:;">应用程序和游戏</a> </li>
@@ -465,6 +469,7 @@
                     success: function (res) {
                         console.log(res);
                         let str = ``;
+                        let str2 = ``;
                         str += `<div class="shopList-main-title">${res[0].cat_one_id}</div>`;
                         res.forEach(function (item) {
 
@@ -478,8 +483,13 @@
                                     </div>
                                 </li>
                                 `;
+                                str2+=`
+                                <li><a href="../html/detail.html?goods_id=${item.goods_id}">${item.cat_id}</a></li>
+                                `
                         });
+                        
                         $('.list_ul').html(str);
+                        $('.shopList-main-left-ul').html(str2);
                         // 分页显示
                         $('.M-box').pagination({
                             mode: 'fixed',

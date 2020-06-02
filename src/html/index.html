@@ -302,25 +302,25 @@
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
                                 <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 </p>
+                                <p class="data_name">距结束 <span id="time1"> </span> </p>
                             </li>
                             <li>
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
                                 <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 </p>
+                                <p class="data_name">距结束 <span id="time2"> </span></p>
                             </li>
                             <li>
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
                                 <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 </p>
+                                <p class="data_name">距结束 <span id="time3"> </span> </p>
                             </li>
                             <li>
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
                                 <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 </p>
+                                <p class="data_name">距结束 <span id="time4"> </span></p>
                             </li>
                         </ul>
                     </div>
@@ -525,7 +525,7 @@
     <script src="../js/lobo.js"></script>
     <script src="../js/cookie.js"></script>
     <script src="../js/jquery.min.js"></script>
-
+    <script src="../js/timer.js"></script>
     <script>
         // 点击显示更多
         $(function () {
@@ -593,7 +593,31 @@
             oBanner.init();
         })
 
+        // 倒计时
+        time1.innerHTML = setTime('2020-6-5 0:0:0');
+        setInterval(function(){
+            time1.innerHTML = setTime('2020-6-5 0:0:0');
+        } , 1000);
 
+        time2.innerHTML = setTime('2020-6-4 0:0:0');
+        setInterval(function(){
+            time2.innerHTML = setTime('2020-6-4 0:0:0');
+        } , 1000);
+
+        time3.innerHTML = setTime('2020-6-6 0:0:0');
+        setInterval(function(){
+            time3.innerHTML = setTime('2020-6-6 0:0:0');
+        } , 1000);
+
+        time4.innerHTML = setTime('2020-6-3 2:0:0');
+        setInterval(function(){
+            time4.innerHTML = setTime('2020-6-3 2:0:0');
+        } , 1000);
+
+       
+ 
+        
+        
         // 返回顶部
         $(function () {
             $('.footer-back').click(function () {

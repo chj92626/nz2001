@@ -50,9 +50,14 @@
     <h3><a href="./list.html?cat_one_id=男装"> </a></h3>
     <ul id="st" class="main_list"></ul>
 
-
+    <div data-toggle="distpicker">
+        <select data-province="---- 选择省 ----"></select>
+        <select data-city="---- 选择市 ----"></select>
+        <select data-district="---- 选择区 ----"></select>
+    </div>
 
     <script src="../js/jquery.min.js"></script>
+    <script src="E:\Amazon\node_modules\distpicker\dist\distpicker.min.js"></script>
     <script>
 
 
@@ -69,6 +74,13 @@
 
             })
         })
+
+
+
+
+
+
+
 
         // $(function () {
         //     getAjax(1);
@@ -105,7 +117,7 @@
         //                         str += `
         //                 <li>
         //                     <div class="pic"><a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_big_logo}" alt=""></a></div>
-                            
+
         //                 </li>
         //                 `;
 

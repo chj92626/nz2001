@@ -272,51 +272,65 @@
     </div>
 
     <!-- 购物车内容 -->
-    <div id="shop-car-show" class="container-fluid">
-        <div class="container clear">
-            <div class="shop-car-show-title">
-                <ul class="show-shop">
-                    <li>
-                        <h2>购物车</h2>
-                    </li>
-                    <li></li>
-                    <li>价格</li>
-                    <li>数量</li>
-                </ul>
-            </div>
-            <div class="shop-car-pay r">
+    <div id="shop-car-show" class="container-fluid clear">
+        <div class="container car-show clear">
 
-                <div class="pay-btn">
-                    <p>小计 (2 件商品): <span class="sp1">￥1,559.23</span></p>
-                    <button name="pay" class="pay">进入结算中心</button>
+            <div class="car-show1 ">
+                <div class="shop-car-show-title">
+                    <ul class="show-shop">
+                        <li>
+                            <input id="checkAll" type="checkbox" name="all" > 全选
+                        </li>
+                        <li>商品介绍</li>
+                        <li>价格</li>
+                        <li>数量</li>
+                    </ul>
+                </div>
+                <div class="shop-car-show-main clear">
+                    <!-- <div class="shop-list">
+                        <div class="change" name='change'>
+                            <input type="checkbox" goods_id="${item.goods_id}" type="checkbox" ${item.buy === true ? 'checked' : ''>
+                        </div>
+                        <div class="shop-pic"><img src="../images/我的订单.jpg" alt=""></div>
+                        <div class="shop-text">
+                            <p>${item.goods_name}</p>
+                            <p>${item.cat_two_id}-${item.cat_three_id}
+                            </p>
+                            <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
+                            <p><span id='del'>删除</span> | <span id='collect'>加入收藏夹</span></p>
+                        </div>
+                        <div class="shop-price"><span>￥<i>${item.goods_price}</i></span></div>
+                        <div class="shop-num">
+                            <button name="lost">-</button>${item.num}<button name="add">+</button>
+                        </div>
+                    </div> -->
+
+                </div>
+                <div class="shop-amount">
+
                 </div>
 
-                <!-- 其他 -->
-                <div>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                    <p>1</p>
-                </div>
             </div>
-            <div class="shop-car-show-main clear">
-                <div class="shop-pic"><img src="../images/我的订单.jpg" alt=""></div>
-                <div class="shop-text">
-                    <p>goods_name</p>
-                    <p>cat_one_id +
-                        cat_three_id +
-                        cat_two_id
-                    </p>
-                    <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
-                    <p><span id='del'>删除</span> | <span id='collect'>加入收藏夹</span></p>
+
+            <div class="car-show2 r">
+                <div class="shop-car-pay">
+                    <div class="pay-btn">
+
+                    </div>
+
+                    <!-- 其他 -->
+                    <div>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                        <p>1</p>
+                    </div>
                 </div>
-                <div class="shop-price"><span>￥1,559.23</span></div>
-                <div class="shop-num"><button name="lost">-</button>num<button name="add">+</button></div>
-            </div>
-            <div class="shop-amount">
-                <p>小计 (2 件商品): <span class="sp1">￥1,559.23</span></p>
             </div>
         </div>
+
+
+
     </div>
     <p>1</p>
     <p>1</p>
@@ -377,6 +391,7 @@
 
     <script src="../js/jquery.min.js"></script>
     <script src="../js/cookie.js"></script>
+    <script src="../js/checkall.js"></script>
 
     <!-- 点击展开类别 -->
     <script>
@@ -536,6 +551,132 @@
                 })
             }
         }
+
+
+        // 动态生成购物车
+        let cateArr = JSON.parse(localStorage.getItem('cart'));
+        setPage(cateArr);
+        function setPage(array) {
+            let str = "";
+            let str2 = "";
+            let str3 = "";
+            let NUM = 0;
+            let TYPE = 0;
+            let PAY = 0;
+
+
+            array.forEach(function (item) {
+
+
+                str += `
+                        <div class="shop-list">
+                        <div class="change">
+                                <input name='change' type="checkbox" goods_id=${item.goods_id}  ${item.buy === true ? 'checked' : ''}
+                                 >
+                            </div>
+                        <div class="shop-pic"><img src="${item.goods_small_logo}" alt=""></div>
+                            <div class="shop-text">
+                                <p>${item.goods_name}</p>
+                                <p>${item.cat_two_id}-${item.cat_three_id}
+                                </p>
+                                <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
+                                <p><span name="del" goods_id="${item.goods_id}" >删除</span> | <span id='collect'>加入收藏夹</span></p>
+                            </div>
+                            <div class="shop-price"><span>￥<i>${item.goods_price}</i></span></div>
+                            <div class="shop-num">
+                                <button name="lost" goods_id="${item.goods_id}" ${item.num == 1 ? 'disabled' : ''}>-</button><span> ${item.num} </span><button name="add" goods_id="${item.goods_id}" ${item.num == item.goods_number ? 'disabled' : ''}>+</button>
+                            </div>
+                        </div>
+                 `
+                $('.shop-car-show-main').html(str);
+
+                if (item.buy === true) {
+                    TYPE++;           // 种类++
+                    NUM += item.num;  // 数量是 += 累加
+                    PAY += item.num * item.goods_price;   // 钱数是 数量*单价
+                }
+                str2 = `
+                <p class="pay-price">小计 (<i>${NUM}</i> 件商品):<span>￥<i>${ parseInt(PAY * 100) / 100}</i></span></p>
+
+                    `
+                $('.shop-amount').html(str2);
+
+                str3 = `
+                <p class="pay-price">小计 (<i>${NUM}</i> 件商品):<span>￥<i>${ parseInt(PAY * 100) / 100}</i></span></p>
+                        <button name="pay" class="pay">进入结算中心</button>`;
+                $('.pay-btn').html(str3);
+
+            });
+
+        };
+
+
+        oDiv = document.querySelector('#shop-car-show');
+        oDiv.addEventListener('click', function (e) {
+            console.log(2)
+            if (e.target.getAttribute('name') === 'all') {
+                // 给数组中的所有数据,buy属性都设定为true
+
+                cateArr.forEach(function (item) {
+                    item.buy = !(item.buy);
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'change') {
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 设定 数据 的 购买数据,是复选框当前的数据
+                        item.buy = $(e.target).prop('checked');
+                    }
+
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'del') {
+                console.log('shanle')
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 从当前的索引下标开始,删除数组中的一个数据单元
+                        cateArr.splice(key, 1);
+                    }
+                })
+            }
+            // 添加
+            if (e.target.getAttribute('name') === 'add') {
+                // 获取 goods_id 的属性
+                console.log('jia')
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 购买数量++
+                        item.num++;
+                    }
+                })
+            }
+            if (e.target.getAttribute('name') === 'lost') {
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 购买数量++
+                        item.num--;
+                    }
+                })
+            }
+            setPage(cateArr);
+            localStorage.setItem('cart', JSON.stringify(cateArr))
+
+        })
+
+
+
 
         // 返回顶部
         $('.footer-back').click(function () {
