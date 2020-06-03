@@ -76,6 +76,10 @@ const jqueryPaginationHandler = function () {
     return gulp.src('./src/jquery-pagination/**/*')
         .pipe(gulp.dest('D:/phpStudy/WWW/Amazon/jquery-pagination'))
 }
+const libHandler = function () {
+    return gulp.src('./src/lib/**/**/**')
+        .pipe(gulp.dest('D:/phpStudy/WWW/Amazon/lib'))
+}
 
 // php文件直接复制过去
 const phpHandler = function () {
@@ -98,11 +102,12 @@ const watchHandler = function () {
     gulp.watch('./src/bootstrap-3.3.7-dist/**/*', bootstrapHandler);       
     gulp.watch('./src/jquery-pagination/**/*', jqueryPaginationHandler);       
     gulp.watch('./src/php/*.php', phpHandler);       
+    gulp.watch('./src/php/*.php', libHandler);       
 }
 
 module.exports.default = gulp.series(
     delHandler,
     // gulp.parallel(cssHandler,jsHandler,htmlHandler,imgHandler,bootstrapHandler,jqueryPaginationHandler,phpHandler),   //默认的,第一次,初始化,先执行一次所有的打包规范
-    gulp.parallel(sassHandler,jsHandler,htmlHandler,imgHandler,bootstrapHandler,jqueryPaginationHandler,phpHandler),   //默认的,第一次,初始化,先执行一次所有的打包规范
+    gulp.parallel(sassHandler,jsHandler,htmlHandler,imgHandler,bootstrapHandler,jqueryPaginationHandler,phpHandler,libHandler),   //默认的,第一次,初始化,先执行一次所有的打包规范
     watchHandler,
 )

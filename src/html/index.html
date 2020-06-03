@@ -7,6 +7,8 @@
     <title>Amazon官网</title>
     <link rel="stylesheet" href="../scss/common.css">
     <link rel="stylesheet" href="../scss/index.css">
+    <link rel="stylesheet" href="../swiper-5.4.1/package/css/swiper.min.css">
+
 </head>
 
 <body>
@@ -71,7 +73,6 @@
             <a href=""><img src="../images/header.png" alt=""></a>
         </div>
     </header>
-    <!-- 页面头部结束 -->
 
     <!-- 导航栏开始 -->
     <nav id="nav" class="container-fluid clear">
@@ -124,7 +125,7 @@
                         </ul>
                     </div>
                 </li>
-                <li name='shop_car' class="shop_car">购物车</li>
+                <li name='shop_car' class="shop_car">购物车(<span class="car-num">0</span>)</li>
                 <li name='wish' class="wish">心愿单</li>
 
             </ol>
@@ -280,7 +281,7 @@
 
 
 
-                
+
                 <div class="content_left_text1 clear">
                     <div>
                         <h2><span>今日</span> 镇店之宝</h2><img src="../images/会员专享_.gif" alt="">
@@ -295,40 +296,17 @@
 
                 </div>
                 <div class="content_left_text2 clear">
-                    <p><span>镇店之宝</span><a href=""> 查看所有</a></p>
+                    <p><span>镇店之宝</span><a href="shop_list.html?cat_one_id=珠宝首饰"> 查看所有</a></p>
                     <div class="content_left_text2_shop_list">
                         <ul class="shop_list_ul clear">
-                            <li>
-                                <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
-                                <p class="price">价格</p>
-                                <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 <span id="time1"> </span> </p>
-                            </li>
-                            <li>
-                                <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
-                                <p class="price">价格</p>
-                                <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 <span id="time2"> </span></p>
-                            </li>
-                            <li>
-                                <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
-                                <p class="price">价格</p>
-                                <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 <span id="time3"> </span> </p>
-                            </li>
-                            <li>
-                                <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
-                                <p class="price">价格</p>
-                                <p class="id_name">商品名字</p>
-                                <p class="data_name">距结束 <span id="time4"> </span></p>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="content_left_text2 clear">
                     <p><span>进口好物</span></p>
                     <div class="content_left_text2_shop_list">
-                        <ul class="shop_list_ul2 clear">
+                        <ul class="shop_list_ul4 clear">
                             <li>
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
@@ -351,7 +329,7 @@
                 <div class="content_left_text2 clear">
                     <p><span>为您推荐</span></p>
                     <div class="content_left_text2_shop_list">
-                        <ul class="shop_list_ul2 clear">
+                        <ul class="shop_list_ul5 clear">
                             <li>
                                 <a href="javaScript:;"><img src="../images/广告2.jpg" alt=""></a>
                                 <p class="price">价格</p>
@@ -467,6 +445,28 @@
     </div>
 
 
+    <!-- 商品轮播图插件 标题 -->
+    <div class="swiper-title container">
+
+    </div>
+    <!-- 商品轮播图 -->
+    <div class="swiper-container container">
+        <div class="swiper-wrapper">
+
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+
+
+
+
+
     <!-- 页脚 -->
     <div class="container-fluid footer">
         <div class=" container footer-list clear">
@@ -526,6 +526,8 @@
     <script src="../js/cookie.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/timer.js"></script>
+    <script src="../swiper-5.4.1/package/js/swiper.min.js"></script>
+
     <script>
         // 点击显示更多
         $(function () {
@@ -551,10 +553,6 @@
             })
         })
 
-        // 列表动态生成
-        $(function(){
-
-        })
         // 登录函数
         function welcome() {
             let username = getCookie("username");
@@ -581,10 +579,175 @@
                 $('.shop_car').click(function () {
                     window.location.href = `./shop_car.html?`;
                 })
+                let cateArr = JSON.parse(localStorage.getItem('cart'));
+                str4 = cateArr.length
+                // console.log(cateArr.length)
+                // console.log('???')
+                $('.car-num').html(str4);
             }
 
 
         }
+
+        // 返回顶部
+        $(function () {
+            $('.footer-back').click(function () {
+                $('html , body').animate({ scrollTop: 0 }, 'slow');
+            })
+        })
+
+
+
+        // 列表动态生成
+        $(function () {
+            getAjax(1);
+            function getAjax(page) {
+
+                let b = '珠宝首饰'
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: b,
+                        page: page,
+                        line: 4,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                        let str = ``;
+                        let c = 1
+                        res.forEach(function (item) {
+
+                            str += `
+                            <li>
+                                <a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                                <p class="price">${item.goods_price}</p>
+                                <p class="id_name">${item.cat_three_id}</p>
+                                <p class="data_name">距结束 <span id="time${c}"> </span> </p>
+                            </li>
+                        `;
+                            c++;
+                            $('.shop_list_ul').html(str);
+
+                        });
+                        // 倒计时
+                        time1.innerHTML = setTime('2020-6-18 0:0:0');
+                        setInterval(function () {
+                            time1.innerHTML = setTime('2020-6-18 0:0:0');
+                        }, 1000);
+
+                        time2.innerHTML = setTime('2020-6-6 0:0:0');
+                        setInterval(function () {
+                            time2.innerHTML = setTime('2020-6-6 0:0:0');
+                        }, 1000);
+
+                        time3.innerHTML = setTime('2020-6-6 0:0:0');
+                        setInterval(function () {
+                            time3.innerHTML = setTime('2020-6-6 0:0:0');
+                        }, 1000);
+
+                        time4.innerHTML = setTime('2020-6-8 2:0:0');
+                        time = setInterval(function () {
+                            time4.innerHTML = setTime('2020-6-8 2:0:0');
+                        }, 1000);
+
+                    }
+                })
+
+                let d = '家装建材'
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: d,
+                        page: page,
+                        line: 4,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                        let str = ``;
+                        let c = 1
+                        res.forEach(function (item) {
+
+                            str += `
+                            <li>
+                                <a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                                <p class="price">${item.goods_price}</p>
+                            </li>
+                        `;
+                            c++;
+                            $('.shop_list_ul2').html(str);
+
+                        });
+
+                    }
+                })
+
+                let f = '海外购'
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: f,
+                        page: page,
+                        line: 4,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                        let str = ``;
+                        let c = 1
+                        res.forEach(function (item) {
+
+                            str += `
+                            <li>
+                                <a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                                <p class="price">${item.goods_price}</p>
+                            </li>
+                        `;
+                            c++;
+                            $('.shop_list_ul4').html(str);
+
+                        });
+
+                    }
+                })
+
+                let e = '电脑办公'
+                $.ajax({
+                    url: '../php/goods_list.php',
+                    data: {
+                        cat_one_id: e,
+                        page: page,
+                        line: 4,
+                    },
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (res) {
+                        console.log(res);
+                        let str = ``;
+                        let c = 1
+                        res.forEach(function (item) {
+
+                            str += `
+                            <li>
+                                <a href="../html/detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                                <p class="price">${item.goods_price}</p>
+                            </li>
+                        `;
+                            c++;
+                            $('.shop_list_ul5').html(str);
+
+                        });
+
+                    }
+                })
+
+            }
+        })
+
 
         //  jq轮播图 
         $(function () {
@@ -593,37 +756,63 @@
             oBanner.init();
         })
 
-        // 倒计时
-        time1.innerHTML = setTime('2020-6-5 0:0:0');
-        setInterval(function(){
-            time1.innerHTML = setTime('2020-6-5 0:0:0');
-        } , 1000);
 
-        time2.innerHTML = setTime('2020-6-4 0:0:0');
-        setInterval(function(){
-            time2.innerHTML = setTime('2020-6-4 0:0:0');
-        } , 1000);
 
-        time3.innerHTML = setTime('2020-6-6 0:0:0');
-        setInterval(function(){
-            time3.innerHTML = setTime('2020-6-6 0:0:0');
-        } , 1000);
 
-        time4.innerHTML = setTime('2020-6-3 2:0:0');
-        setInterval(function(){
-            time4.innerHTML = setTime('2020-6-3 2:0:0');
-        } , 1000);
-
-       
- 
-        
-        
-        // 返回顶部
+        // 轮播图插件 
         $(function () {
-            $('.footer-back').click(function () {
-                $('html , body').animate({ scrollTop: 0 }, 'slow');
-            })
+            // 可修改轮播图图片，修改 cats_id 
+            let cats_id = '大家电';
+            $.ajax({
+                url: '../php/goods_list.php',
+                data: {
+                    cat_one_id: cats_id,
+                    page: 1,
+                    line: 40,
+                },
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    console.log(res)
+                    let htmlstr = ""
+                    res.forEach((msg) => {
+                        $('.swiper-title').html(cats_id)
+                        htmlstr += ` 
+                            <div class="swiper-slide">
+                                <div class="shop_pic">
+                                    <a  href="../html/detail.html?goods_id=${msg.goods_id}">
+                                    <img src="${msg.goods_small_logo}" alt="">
+                                    </a>
+                                    <h3>${msg.cat_id}</h3>
+                                    <p class="pice">￥<span>${msg.goods_price}</span></p> 
+                                </div>
+                            </div>`
+                    })
+                    //
+                    $(".swiper-container .swiper-wrapper").html(htmlstr)
+                    var mySwiper = new Swiper('.swiper-container', {
+                        direction: 'horizontal',
+                        // autoplay:true,
+                        loop: true,
+                        // 循环模式选项
+                        slidesPerView: 5,
+                        slidesPerGroup: 5,
+                        // 如果需要分页器
+                        pagination: {
+                            el: '.swiper-pagination',
+                            type: 'fraction',
+                        },
+                        // 如果需要前进后退按钮
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+
+                    })
+                },
+            });
         })
+
 
     </script>
 

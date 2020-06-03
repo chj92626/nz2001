@@ -12,7 +12,7 @@ body{background: #ebebeb;}
 #shop-car-show{background: white; }
 .car-show{display: flex;}
 .car-show .car-show1{
-    background: #c9d48c; display: flex;}
+    display: flex;}
 
 .car-show .car-show1{
     flex: 1;
@@ -24,7 +24,7 @@ body{background: #ebebeb;}
     text-align: center;
     padding-left:10px;
     box-sizing: border-box;
-background: #d48c8c;}
+}
 
 
 #shop-car-show .car-show .car-show1 .shop-car-show-title{
@@ -52,16 +52,16 @@ background: #d48c8c;}
 .shop-car-show-main>.shop-list>div{float: left;}
 .shop-car-show-main>.shop-list>.change{width: 50px;display: flex;justify-content: center; margin-top: 50px;}
 .shop-car-show-main>.shop-list>.change>input{width: 20px;height: 20px;}
-.shop-car-show-main>.shop-list>.shop-pic{width: 120px;background: #f6d29b;}
+.shop-car-show-main>.shop-list>.shop-pic{width: 120px;}
 .shop-car-show-main>.shop-list>.shop-pic>img{display: block;width: 100%;}
-.shop-car-show-main>.shop-list>.shop-price{width: 180px;background: #edf69b;}
-.shop-car-show-main>.shop-list>.shop-price span{font-size: 14px; color: #fc7c27;}
+.shop-car-show-main>.shop-list>.shop-price{width: 180px;}
+.shop-car-show-main>.shop-list>.shop-price span{font-size: 14px;}
 .shop-car-show-main>.shop-list>.shop-price span>i{
     font-size: 24px;
 }
-.shop-car-show-main>.shop-list>.shop-text{width:430px;background: #9ef69b; padding-left: 10px;}
+.shop-car-show-main>.shop-list>.shop-text{width:430px; padding-left: 10px;}
 .shop-car-show-main>.shop-list>.shop-text>p{margin-bottom: 8px;}
-.shop-car-show-main>.shop-list>.shop-num{float: right;background: #9bf6ee;}
+.shop-car-show-main>.shop-list>.shop-num{float: right;}
 .shop-car-show-main>.shop-list>.shop-num>button{width: 20px;}
 
 .pay-price span{font-size: 14px;color: #fc7c27;}

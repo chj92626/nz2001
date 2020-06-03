@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请选择配送地址</title>
+    <link rel="stylesheet" href="../scss/common.css">
+    <link rel="stylesheet" href="../scss/pay.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <ul class="list-ul1">
+            <li class="li1"><img src="" alt=""></li>
+            <li class="li2">请选择配送地址</li>
+            <li class="li3">您想使用的是下方的地址吗？如果是，点击相应的“配送到这个地址”按钮，或者宁可以输入一个新的地址：<a href="">添加新地址</a></li>
+            <li class="li4">这里是添加的地址</li>
+        </ul>
+        <ul class="address">
+            
+        </ul>
+        <ul class="list-ul2">
+            <li class="li5">添加新地址</li>
+            <li class="li6">完成时确保点击“配送到这个地址”</li>
+            <li class="li7"><a href="">填写国际/港澳台地址</a></li>
+            <li class="li8">姓名
+                <input type="text"></li>
+            <li class="li10">联系电话
+                <input type="text"></li>
+            <li class="li12">地区
+                <div data-toggle="distpicker">
+                    <select data-province="---- 选择省 ----"></select>
+                    <select data-city="---- 选择市 ----"></select>
+                    <select data-district="---- 选择区 ----"></select>
+                </div>
+            </li>
+            <li class="li14">街道信息
+                <input type="text"></li>
+            <li class="li16">其他地址信息(<a href="">这是什么</a>)</li>
+            <li class="li17">配送地址可选项信息用于帮助我们更好的安排您的配送时间，但实际配送时间根据具体情况可能早于或晚于计划时间。</li>
+            <li class="li18">双休日是否配送：</li> 
+            <li class="li19">
+                <select>
+                    <option value="可以配送">可以配送</option>
+                    <option value="不可配送">不可配送</option>
+                    <option value="无所谓">无所谓</option>
+                </select>
+            </li>
+        </ul>
+        <div>
+            <button>送货到该地址</button>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../lib/distpicker/dist/distpicker.min.js"></script>
+</body>
+
+</html>

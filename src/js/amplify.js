@@ -13,7 +13,7 @@ class Amplify{
         this.mask = ele.querySelector('.mask');
     
         // 放大镜区域
-        this.glass = ele.querySelector('.glass');
+        this.glass = ele.querySelector('.b_img');
     }
     // 入口函数 
     init(){
@@ -25,13 +25,11 @@ class Amplify{
     overOut(){
         // 鼠标移入,图片区域show,让遮盖层和放大镜显示
         this.show.addEventListener('mouseover' , ()=>{
-            console.log('移入')
             this.mask.style.display = 'block';
             this.glass.style.display = 'block';
         })
         // 鼠标移出,图片区域show,让遮盖层和放大镜隐藏
         this.show.addEventListener('mouseout' , ()=>{
-            console.log('移出')
 
             this.mask.style.display = 'none';
             this.glass.style.display = 'none';

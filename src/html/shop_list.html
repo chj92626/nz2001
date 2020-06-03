@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    <!-- 页面头部开始 -->
-    <header id="header" class="container-fluid clear">
+     <!-- 页面头部开始 -->
+     <header id="header" class="container-fluid clear">
         <div class="header-logo1 l">
             <a href="./index.html"><img src="../images/header_login1.png" alt=""></a>
             <div class="header_login1_text">
@@ -81,6 +81,7 @@
     <nav id="nav" class="container-fluid clear">
         <div class="nav_list1">
             全部商品分类
+
         </div>
 
         <ul class="nav_ul">
@@ -88,7 +89,7 @@
             <li><a href="shop_list.html?cat_one_id=居家生活">居家生活</a></li>
             <li><a href="shop_list.html?cat_one_id=海外购">海外购</a> </li>
             <li><a href="shop_list.html?cat_one_id=手机相机">手机</a></li>
-            <li><a href="shop_list.html?cat_one_id=男装">男装</a></li>
+            <li><a href="javaScript:;">帮助</a></li>
             <li><a href="shop_list.html?cat_one_id=智能设备">智能设备</a></li>
         </ul>
         <div class="nav_list2">
@@ -127,7 +128,7 @@
                         </ul>
                     </div>
                 </li>
-                <li name='shop_car' class="shop_car">购物车</li>
+                <li name='shop_car' class="shop_car">购物车(<span class="car-num">0</span>)</li>
                 <li name='wish' class="wish">心愿单</li>
 
             </ol>
@@ -506,11 +507,14 @@
                             callback: function (result) {
                                 let p = result.getCurrent();
                                 getAjax(p);
+                                $('html , body').animate({ scrollTop: 0 }, 'slow');
                             },
                         });
                     },
 
                 });
+            
+            
             }
 
             // 轮播图插件 
@@ -522,7 +526,7 @@
                     data: {
                         cat_one_id: cats_id,
                         page: 1,
-                        line: 18,
+                        line: 40,
                     },
                     type: 'get',
                     dataType: 'json',
@@ -567,6 +571,8 @@
                 });
             })
 
+
+            
         })
 
         // 添加cookie
@@ -599,6 +605,11 @@
                 $('.shop_car').click(function () {
                     window.location.href = './shop_car.html'
                 })
+                let cateArr = JSON.parse(localStorage.getItem('cart'));
+        str4 = cateArr.length
+        // console.log(cateArr.length)
+        // console.log('???')
+        $('.car-num').html(str4);
             }
         }
 
