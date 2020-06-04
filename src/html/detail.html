@@ -262,9 +262,7 @@
                     其他相关
                 </div>
                 <div class="right-list2">
-
                     <ul class="main_list_ul">
-
                         <li class="main_list_li"></li>
                         <li class="main_list_li1"></li>
                         <li class="main_list_li2"></li>
@@ -505,7 +503,7 @@
 
                     if (localStorage.getItem('cart') === null) {
 
-                        result.num = 1;
+                        result.num = $('.index-num').html();
                         result.buy = true;
                         var arr = [];
                         arr.push(result);
@@ -520,7 +518,7 @@
                         });
 
                         if (bool === true) {
-                            result.num = 1;
+                            result.num = $('.index-num').html();
                             result.buy = true;
                             arr.unshift(result);
                         }
@@ -720,6 +718,10 @@
 
             }
         })
+        
+        
+        
+        
         // 返回顶部
         $('.footer-back').click(function () {
             $('html , body').animate({ scrollTop: 0 }, 'slow');

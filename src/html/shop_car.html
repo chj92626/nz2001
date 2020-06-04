@@ -14,8 +14,8 @@
 
 <body>
 
-     <!-- 页面头部开始 -->
-     <header id="header" class="container-fluid clear">
+    <!-- 页面头部开始 -->
+    <header id="header" class="container-fluid clear">
         <div class="header-logo1 l">
             <a href="./index.html"><img src="../images/header_login1.png" alt=""></a>
             <div class="header_login1_text">
@@ -273,8 +273,8 @@
             <div class="car-show1 ">
                 <div class="shop-car-show-title">
                     <ul class="show-shop">
-                        <li id="checkAll"  name="all">
-                             全选
+                        <li id="checkAll" name="all">
+                            全选
                         </li>
                         <li>商品介绍</li>
                         <li>价格</li>
@@ -282,12 +282,50 @@
                     </ul>
                 </div>
                 <div class="shop-car-show-main clear">
-                  
+
                 </div>
                 <div class="shop-amount">
 
                 </div>
+               
+                <!-- <div class="favorite">
+                    <h1>我是收藏夹</h1>
+                    <div class="favorite-list">
+                        <div class="favorite-pic">
+                            <img src="../images/n2.png" alt="">
+                        </div>
 
+                        <div class="favorite-text">
+                            <p>${item.goods_name}</p>
+                            <p>${item.cat_two_id}-${item.cat_three_id}
+                            </p>
+                            <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
+                            <p><span name="del" goods_id="${item.goods_id}">删除</span> | <span id='collect'>加入收藏夹</span>
+                            </p>
+                        </div>
+                        <div class="shop-price"><span>￥<i>${item.goods_price}</i></span></div>
+                    </div>
+
+                </div> -->
+                <!-- <div class="favorite">
+
+                    <h1>我是收藏夹</h1> 
+                    <div class="favorite-list">
+                        
+                        <div class="favorite-pic"><img src="../images/微信二维码.png" alt=""></div>
+                            <div class="favorite-text">
+                                <p>${item.goods_name}</p>
+                                <p>${item.cat_two_id}-${item.cat_three_id}
+                                </p>
+                                <p>销售和发货商：<a href="javaScript:;">亚马逊</a></p>
+                                <p><span name="del" goods_id="${item.goods_id}" >删除</span> | <span id='collect'>加入收藏夹</span></p>
+                            </div>
+                            <div class="favorite-price"><span>￥<i>${item.goods_price}</i></span></div>
+                           
+                            </div>
+                        </div>
+
+                </div> -->
             </div>
 
             <div class="car-show2 r">
@@ -297,22 +335,18 @@
                     </div>
 
                     <!-- 其他 -->
-                    <div>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
-                        <p>1</p>
+                    <div class="right-list2">
+                        <ul class="main_list_ul">
+                            <li class="main_list_li"></li>
+                            <li class="main_list_li1"></li>
+                            <li class="main_list_li2"></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
-    <p>1</p>
-    <p>1</p>
-    <p>1</p>
+   
     <!-- 页脚 -->
     <div class="container-fluid footer">
         <div class=" container footer-list clear">
@@ -465,8 +499,124 @@
                         });
                     },
                 });
-               
+
             }
+
+
+            $(function () {
+                getAjax(1);
+                function getAjax(page) {
+
+                    let b = '大家电';
+                    $.ajax({
+                        url: '../php/goods_list.php',
+                        data: {
+                            cat_one_id: b,
+                            page: page,
+                            line: 1,
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            let str = ``;
+                            res.forEach(function (item) {
+
+                                str += `
+                                <h3 id="st"><a href='shop_list.html?cat_one_id=${b}'>${b}</a> </h3>
+                                <a href="detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                            
+                        `;
+                                $('.main_list_li').html(str);
+
+                            });
+
+                        }
+                    })
+
+                    let d = '手机相机';
+                    $.ajax({
+                        url: '../php/goods_list.php',
+                        data: {
+                            cat_one_id: d,
+                            page: page,
+                            line: 1,
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            let str = ``;
+                            let c = 1
+                            res.forEach(function (item) {
+
+                                str += `
+                            
+                                <h3 id="st"><a href='shop_list.html?cat_one_id=${d}'>${d}</a></h3>
+                                <a href="detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                           
+                        `;
+                                $('.main_list_li1').html(str);
+
+                            });
+
+                        }
+                    })
+
+                    let e = '电脑办公';
+                    $.ajax({
+                        url: '../php/goods_list.php',
+                        data: {
+                            cat_one_id: e,
+                            page: page,
+                            line: 1,
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            let str = ``;
+                            let c = 1
+                            res.forEach(function (item) {
+
+                                str += `
+                            <h3 id="st"><a href='shop_list.html?cat_one_id=${e}'>${e}</a></h3>
+                                <a href="detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                        `;
+                                $('.main_list_li3').html(str);
+
+                            });
+
+                        }
+                    })
+
+                    let f = '皮具箱包';
+                    $.ajax({
+                        url: '../php/goods_list.php',
+                        data: {
+                            cat_one_id: f,
+                            page: page,
+                            line: 1,
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (res) {
+                            let str = ``;
+                            let c = 1
+                            res.forEach(function (item) {
+
+                                str += `
+                            <h3 id="st"><a href='shop_list.html?cat_one_id=${f}'>${f}</a></h3>
+                                <a href="detail.html?goods_id=${item.goods_id}"><img src="${item.goods_small_logo}" alt=""></a>
+                        `;
+                                $('.main_list_li2').html(str);
+
+                            });
+
+                        }
+                    })
+
+                }
+            })
+
+
 
         })
 
@@ -489,7 +639,7 @@
                 $('.login').click(function () {
                     window.location.href = `./login.html?${window.location.href}`;
                 })
-               
+
             } else {
                 $('.userStr').css('display', 'inline-block')
                 $('.myLogin').css('display', 'none')
@@ -502,19 +652,19 @@
                     window.location.href = './shop_car.html'
                 });
                 let cateArr = JSON.parse(localStorage.getItem('cart'));
-        str4 = cateArr.length
-        // console.log(cateArr.length)
-        // console.log('???')
-        $('.car-num').html(str4);
-               
+                str4 = cateArr.length
+                // console.log(cateArr.length)
+                // console.log('???')
+                $('.car-num').html(str4);
+
             }
-           
+
         }
 
 
         // 动态生成购物车
         let cateArr = JSON.parse(localStorage.getItem('cart'));
-        
+
         setPage(cateArr);
         function setPage(array) {
             let str = "";
@@ -544,31 +694,30 @@
                             </div>
                             <div class="shop-price"><span>￥<i>${item.goods_price}</i></span></div>
                             <div class="shop-num">
-                                <button name="lost" goods_id="${item.goods_id}" ${item.num == 1 ? 'disabled' : ''}>-</button><span> ${item.num}</span><button name="add" goods_id="${item.goods_id}" ${item.num == item.goods_number ? 'disabled' : ''}>+</button>
+                                <button name="lost" goods_id="${item.goods_id}" ${item.num == 1 ? 'disabled' : ''}>-</button><span class>${item.num}</span><button name="add" goods_id="${item.goods_id}" ${item.num == item.goods_number ? 'disabled' : ''}>+</button>
                             </div>
                         </div>
                  `
                 $('.shop-car-show-main').html(str);
-
                 if (item.buy === true) {
                     TYPE++;           // 种类++
-                    NUM += item.num;  // 数量是 += 累加
+                    NUM += (item.num - 0);  // 数量是 += 累加
                     PAY += item.num * item.goods_price;   // 钱数是 数量*单价
                 }
                 str2 = `
-                <p class="pay-price">小计 (<i class="i_num">${NUM}</i> 件商品):<span>￥<i>${ parseInt(PAY * 100) / 100}</i></span></p>
+                <p class="pay-price">小计 (<i class="i_num">${NUM}</i> 件商品):<span>￥<i>${parseInt(PAY * 100) / 100}</i></span></p>
 
                     `
                 $('.shop-amount').html(str2);
 
                 str3 = `
-                <p class="pay-price">小计 (<i>${NUM}</i> 件商品):<span>￥<i class='i-num'>${ parseInt(PAY * 100) / 100}</i></span></p>
+                <p class="pay-price">小计 (<i>${NUM}</i> 件商品):<span>￥<i class='i-num'>${parseInt(PAY * 100) / 100}</i></span></p>
                         <button name="pay" class="pay">进入结算中心</button>`;
-                
+
                 $('.pay-btn').html(str3);
-                str4 =`${cateArr.length}`
+                str4 = `${cateArr.length}`
                 $('.car-num').html(str4);
-                
+
             });
 
         };
@@ -598,17 +747,17 @@
                 })
             }
             if (e.target.getAttribute('name') === 'pay') {
-                if($('.i-num').html() == 0){
+                if ($('.i-num').html() == 0) {
                     console.log(($('.i-num').html()))
                     window.alert('您暂未选中要购买的商品，请选择后再试！')
                     return;
-                }else{
+                } else {
                     window.location.href = './pay.html'
 
                 }
-               
-                    
-                }
+
+
+            }
             if (e.target.getAttribute('name') === 'del') {
                 console.log('shanle')
                 let goods_id = e.target.getAttribute('goods_id');
@@ -648,8 +797,6 @@
             localStorage.setItem('cart', JSON.stringify(cateArr))
 
         })
-
-
 
 
         // 返回顶部

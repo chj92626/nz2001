@@ -113,7 +113,7 @@ i{font-style: normal;}
 #lobo>ul>li{ width: 100%; position: absolute;  top: 0;
   left: 0;overflow: hidden; opacity: 0; left: 50%;transform: translateX(-50%); }
 #lobo>ol{
-  height:10px;
+  height:8px;
   display: flex;
   position: absolute;
   bottom:0px;
@@ -131,10 +131,10 @@ i{font-style: normal;}
 #lobo>ol>li.active{
   background: rgb(248, 81, 3);
 }
-#lobo:hover ol{
-  bottom: 0;
-  height:40px;
-}
+// #lobo:hover ol{
+//   bottom: 0;
+//   height:40px;
+// }
 #lobo>div{
   width: 100%;
   height: 50px;

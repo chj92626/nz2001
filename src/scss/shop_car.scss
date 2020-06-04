@@ -43,7 +43,6 @@ body{background: #ebebeb;}
     height: 20px;
     margin-left: 20px;
 }
-
 #shop-car-show .shop-car-show-main>div{
     border-bottom:1px transparent solid;border-image:linear-gradient(to right,
     white, gray,white) 1 10 ; 
@@ -77,3 +76,31 @@ body{background: #ebebeb;}
 #shop-car-show .shop-car-pay .pay-btn .pay:hover{background: #f0c24d;}
 
 .shop-amount{text-align: right;border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, rgb(114, 113, 113),white) 1 10 ;}
+
+
+
+.right-list2 h3{
+    margin: 10px 0;
+}
+.right-list2 h3 a{
+    color: #222222;
+}
+.right-list_pic{
+    margin-bottom: 20px;
+}
+.right-list_pic img{
+    width: 100%;
+    height: 100%;
+    
+}
+.right-list2{margin-left: 50px;}
+.right-list2 .main_list_ul li{width: 100px;}
+.right-list2 .main_list_ul li img {
+    width: 100%;
+}
+// .favorite{border-bottom:1px transparent solid;border-image:linear-gradient(to right,white, rgb(114, 113, 113),white) 1 10 ;}
+// .favorite h1{font-size: 22px;margin: 10px 0;}
+// .favorite-pic{width: 150px;}
+// .favorite-pic img{width: 100%;}
+// .favorite-list{display: flex; justify-content: space-between;}
+// .favorite-list div{float: left;}

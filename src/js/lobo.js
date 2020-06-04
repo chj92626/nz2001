@@ -141,7 +141,6 @@ class Banner{
                 
                 // 让当前原始index值对应的标签,透明度为0
                 this.oUllis[this.index].style.opacity = 0;
-                
                 // 将这个索引赋值给this.index
                 this.index = ind ;
                 // 让新的index对应的标签,透明度为1

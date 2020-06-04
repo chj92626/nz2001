@@ -39,8 +39,8 @@ class Amplify{
         // 鼠标在show区域移动
         this.show.addEventListener('mousemove' , (e)=>{
             
-            let x = e.clientX - this.ele.offsetLeft - this.ele.clientLeft - this.mask.clientWidth;
-            let y = e.clientY - this.ele.offsetTop - this.ele.clientTop - this.mask.clientHeight;
+            let x = e.pageX - this.ele.offsetLeft - this.ele.clientLeft - this.mask.clientWidth;
+            let y = e.pageY - this.ele.offsetTop - this.ele.clientTop - this.mask.clientHeight;
 
             // 设定边界值
             // 最小是 0  最大值 父级div宽高 - 遮盖层宽高
