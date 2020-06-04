@@ -153,6 +153,11 @@
                 let str = decodeURIComponent(window.location.search);
                 str = str.substr(1);
                 console.log(str)
+                if(str == ""){
+                     str = "http://127.0.0.1/Amazon/html/index.html";
+                }else{
+                    str = str ;
+                }
                 // 1、存储cookie
                 setCookie("username", $("#username").val(), 7);
                 // 2、显示提示信息

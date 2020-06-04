@@ -704,10 +704,13 @@
                     NUM += (item.num - 0);  // 数量是 += 累加
                     PAY += item.num * item.goods_price;   // 钱数是 数量*单价
                 }
+
+                // 计算商品数量和金额
                 str2 = `
                 <p class="pay-price">小计 (<i class="i_num">${NUM}</i> 件商品):<span>￥<i>${parseInt(PAY * 100) / 100}</i></span></p>
 
                     `
+                // 将计算的数量今天写到对应的标签
                 $('.shop-amount').html(str2);
 
                 str3 = `
