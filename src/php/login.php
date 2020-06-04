@@ -8,8 +8,8 @@
 
     // 二、处理（连接数据库，进行查询）
     // 1、连接数据库
-    $conn = mysqli_connect("localhost","root","root","2001db");
-
+    $conn = mysqli_connect("localhost","root","root","nz2002");
+            
     // 2、执行sql语句
     // 执行查询语句的返回值是个表格
     $result = mysqli_query($conn,"select * from vip where username='{$name}' and userpass='{$pass}'");

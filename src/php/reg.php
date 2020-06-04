@@ -7,7 +7,7 @@ $pass = $_POST["userpass"];
 
 // 二、连接数据库进行处理（增？？）
 // 1、连接数据库
-$conn = mysqli_connect("localhost","root","root","2001db");
+$conn = mysqli_connect("localhost","root","root","nz2002");
 // 2、执行sql语句
 $sql = "INSERT INTO `vip` (`username`,`userpass`) VALUES ('{$name}','{$pass}')";
 $result = mysqli_query($conn, $sql);   
